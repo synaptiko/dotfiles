@@ -18,7 +18,7 @@ set noshowmode
 set relativenumber
 set updatetime=750
 set t_Co=256
-set listchars=tab:  ,trail:·
+set listchars=tab:  ,trail:·,nbsp:·
 set list
 let mapleader='\<SPACE>'						" TODO: Not working currently
 

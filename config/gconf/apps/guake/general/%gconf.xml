@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<gconf>
+	<entry name="default_shell" mtime="1448479326" type="string">
+		<stringvalue>/bin/bash</stringvalue>
+	</entry>
+	<entry name="start_fullscreen" mtime="1448479326" type="bool" value="true"/>
+	<entry name="prompt_on_close_tab" mtime="1448479326" type="int" value="0"/>
+	<entry name="use_palette_font_and_background_color" mtime="1448479326" type="bool" value="true"/>
+	<entry name="window_valignment" mtime="1428695709" type="int" value="0"/>
+	<entry name="compat_delete" mtime="1448479326" type="string">
+		<stringvalue>delete-sequence</stringvalue>
+	</entry>
+	<entry name="compat_backspace" mtime="1448479326" type="string">
+		<stringvalue>ascii-delete</stringvalue>
+	</entry>
+	<entry name="window_ontop" mtime="1416758073" type="bool" value="true"/>
+	<entry name="use_login_shell" mtime="1416757526" type="bool" value="false"/>
+	<entry name="window_height_f" mtime="1448479326" type="float" value="100"/>
+	<entry name="window_width_f" mtime="1448479326" type="float" value="100"/>
+	<entry name="window_height" mtime="1448479326" type="int" value="100"/>
+	<entry name="open_tab_cwd" mtime="1448479326" type="bool" value="true"/>
+	<entry name="use_default_font" mtime="1414951637" type="bool" value="false"/>
+	<entry name="scroll_keystroke" mtime="1448479326" type="bool" value="true"/>
+	<entry name="history_size" mtime="1448479326" type="int" value="4096"/>
+	<entry name="use_scrollbar" mtime="1447874053" type="bool" value="false"/>
+	<entry name="mouse_display" mtime="1428695701" type="bool" value="false"/>
+	<entry name="display_n" mtime="1448479326" type="int" value="-1"/>
+	<entry name="quick_open_command_line" mtime="1448479326" type="string">
+		<stringvalue>gedit %(file_path)s</stringvalue>
+	</entry>
+	<entry name="window_tabbar" mtime="1428695699" type="bool" value="false"/>
+	<entry name="window_halignment" mtime="1448479326" type="int" value="0"/>
+	<entry name="window_width" mtime="1448479326" type="int" value="100"/>
+	<entry name="window_losefocus" mtime="1448479326" type="bool" value="false"/>
+	<entry name="prompt_on_quit" mtime="1448479326" type="bool" value="true"/>
+	<entry name="use_popup" mtime="1416758040" type="bool" value="false"/>
+	<entry name="use_trayicon" mtime="1416758041" type="bool" value="false"/>
+</gconf>

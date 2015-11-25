@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<gconf>
+	<entry name="decrease_height" mtime="1416757687" type="string">
+		<stringvalue>&lt;Primary&gt;Up</stringvalue>
+	</entry>
+	<entry name="increase_height" mtime="1416757686" type="string">
+		<stringvalue>&lt;Primary&gt;Down</stringvalue>
+	</entry>
+	<entry name="zoom_in_alt" mtime="1416757268" type="string">
+		<stringvalue>disabled</stringvalue>
+	</entry>
+	<entry name="switch_tab10" mtime="1414956910" type="string">
+		<stringvalue>disabled</stringvalue>
+	</entry>
+	<entry name="switch_tab9" mtime="1414956909" type="string">
+		<stringvalue>disabled</stringvalue>
+	</entry>
+	<entry name="switch_tab8" mtime="1414956909" type="string">
+		<stringvalue>disabled</stringvalue>
+	</entry>
+	<entry name="switch_tab7" mtime="1414956909" type="string">
+		<stringvalue>disabled</stringvalue>
+	</entry>
+	<entry name="switch_tab6" mtime="1414956908" type="string">
+		<stringvalue>disabled</stringvalue>
+	</entry>
+	<entry name="switch_tab5" mtime="1414956908" type="string">
+		<stringvalue>disabled</stringvalue>
+	</entry>
+	<entry name="switch_tab4" mtime="1414956907" type="string">
+		<stringvalue>disabled</stringvalue>
+	</entry>
+	<entry name="switch_tab3" mtime="1414956907" type="string">
+		<stringvalue>disabled</stringvalue>
+	</entry>
+	<entry name="switch_tab2" mtime="1414956906" type="string">
+		<stringvalue>disabled</stringvalue>
+	</entry>
+	<entry name="switch_tab1" mtime="1414956905" type="string">
+		<stringvalue>disabled</stringvalue>
+	</entry>
+</gconf>
