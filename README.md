@@ -5,7 +5,7 @@ Clone this repo into `~/.files` and run:
 $ ./init.sh
 ```
 
-## My dotfiles contains:
+## My .files contains:
 - Neovim configuration
 - Custom font
 - Guake configuration
