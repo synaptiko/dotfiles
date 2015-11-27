@@ -20,7 +20,9 @@ set updatetime=750
 set t_Co=256
 set listchars=tab:  ,trail:·,nbsp:·
 set list
-let mapleader='\<SPACE>'						" TODO: Not working currently
+
+let mapleader='\'
+map <SPACE> <Leader>
 
 call plug#begin('~/.config/nvim/plugged')
 Plug 'bling/vim-airline'
