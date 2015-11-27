@@ -12,6 +12,7 @@ if [ ! -d $NVIM_DIR ]; then
 	curl -sfLo $NVIM_DIR/autoload/plug.vim \
 		https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 	ln -s $DIR/config/nvim/init.vim $NVIM_DIR/init.vim
+	pip install --user neovim
 	echo "Neovim configured"
 	echo "Run \"nvim -c PlugInstall\" to install all plugins; warnings at the start can be ignored"
 	echo

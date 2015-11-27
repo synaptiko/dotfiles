@@ -22,3 +22,6 @@ I'm using Arch Linux with following packages preinstalled:
 - neovim-gnome-terminal-wrapper (aur)
 - gconf
 - dconf
+- the\_silver\_searcher
+- python
+- python\_pip
