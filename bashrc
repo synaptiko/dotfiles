@@ -21,6 +21,10 @@ if [[ $TERM == 'xterm-256color' ]]; then
 fi
 export TERM=gnome-256color
 
+# Setting ag as the default source for fzf
+export FZF_DEFAULT_COMMAND='ag -g ""'
+export FZF_DEFAULT_OPTS="--reverse --inline-info"
+
 # clean-up recently used because I don't like it
 echo -n > $HOME/.local/share/recently-used.xbel
 

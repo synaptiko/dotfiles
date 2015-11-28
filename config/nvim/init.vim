@@ -33,6 +33,12 @@ Plug 'synaptiko/fzf'
 Plug 'junegunn/fzf.vim'
 call plug#end()
 
+" The Silver Searcher
+if executable('ag')
+	" Use ag over grep
+	set grepprg=ag\ --nogroup\ --nocolor
+endif
+
 let g:gruvbox_italic=1
 let g:gruvbox_bold=1
 let g:gruvbox_termcolors=256
@@ -49,22 +55,9 @@ let g:airline_powerline_fonts=1
 let g:gitgutter_sign_column_always=1
 let g:gitgutter_realtime=1
 
-let g:fzf_command_prefix='Fzf'
-let g:fzf_layout={ 'up': '~40%' }
+let g:fzf_command_prefix='Fzz'
+let g:fzf_layout={ 'window': 'topleft 14new' }
 
-nmap <C-p> :FzfFiles<CR>
-
-function! NumberToggle()
-	if (&relativenumber == 1)
-		set norelativenumber
-	else
-		set relativenumber
-	endif
-endfunc
-" nnoremap <C-n> :call NumberToggle()<cr>
-
-" The Silver Searcher
-if executable('ag')
-	" Use ag over grep
-	set grepprg=ag\ --nogroup\ --nocolor
-endif
+nmap <C-p> :FzzFiles<CR>
+nmap <C-e> :FzzBuffers<CR>
+nmap <C-r> :FzzLines<CR>
