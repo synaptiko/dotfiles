@@ -60,4 +60,6 @@ let g:fzf_layout={ 'window': 'topleft 14new' }
 
 nmap <C-p> :FzzFiles<CR>
 nmap <C-e> :FzzBuffers<CR>
-nmap <C-r> :FzzLines<CR>
+nmap <M-R> :FzzLines<CR>
+
+nmap <C-l> :nohlsearch<CR>
