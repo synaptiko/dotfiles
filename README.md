@@ -23,5 +23,6 @@ I'm using Arch Linux with following packages preinstalled:
 - gconf
 - dconf
 - the\_silver\_searcher
+- fzf (aur)
 - python
 - python\_pip

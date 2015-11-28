@@ -29,8 +29,8 @@ Plug 'bling/vim-airline'
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 Plug 'morhetz/gruvbox'
-Plug 'kien/ctrlp.vim'
-Plug 'FelikZ/ctrlp-py-matcher'
+Plug 'synaptiko/fzf'
+Plug 'junegunn/fzf.vim'
 call plug#end()
 
 let g:gruvbox_italic=1
@@ -49,9 +49,10 @@ let g:airline_powerline_fonts=1
 let g:gitgutter_sign_column_always=1
 let g:gitgutter_realtime=1
 
-let g:ctrlp_lazy_update = 350 " Set delay to prevent extra search
-let g:ctrlp_max_files = 0
-let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
+let g:fzf_command_prefix='Fzf'
+let g:fzf_layout={ 'up': '~40%' }
+
+nmap <C-p> :FzfFiles<CR>
 
 function! NumberToggle()
 	if (&relativenumber == 1)
@@ -66,7 +67,4 @@ endfunc
 if executable('ag')
 	" Use ag over grep
 	set grepprg=ag\ --nogroup\ --nocolor
-
-	" Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
-	let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 endif
