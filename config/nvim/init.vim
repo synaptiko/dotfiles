@@ -18,8 +18,9 @@ set noshowmode
 set relativenumber
 set updatetime=750
 set t_Co=256
-set listchars=tab:  ,trail:·,nbsp:·
+set listchars=tab:  ,trail:·,space:·,nbsp:·
 set list
+set title
 
 let mapleader='\'
 map <SPACE> <Leader>
@@ -31,6 +32,7 @@ Plug 'airblade/vim-gitgutter'
 Plug 'morhetz/gruvbox'
 Plug 'synaptiko/fzf'
 Plug 'junegunn/fzf.vim'
+Plug 'inside/vim-grep-operator'
 call plug#end()
 
 " The Silver Searcher
@@ -51,6 +53,7 @@ colorscheme gruvbox
 
 let g:airline_theme='gruvbox'
 let g:airline_powerline_fonts=1
+let g:airline#extensions#whitespace#enabled=0
 
 let g:gitgutter_sign_column_always=1
 let g:gitgutter_realtime=1
@@ -58,8 +61,13 @@ let g:gitgutter_realtime=1
 let g:fzf_command_prefix='Fzz'
 let g:fzf_layout={ 'window': 'topleft 14new' }
 
+nmap <leader>g <Plug>GrepOperatorOnCurrentDirectory
+vmap <leader>g <Plug>GrepOperatorOnCurrentDirectory
+
 nmap <C-p> :FzzFiles<CR>
 nmap <C-e> :FzzBuffers<CR>
-nmap <M-R> :FzzLines<CR>
+nmap <M-R> :FzzBLines<CR>
 
 nmap <C-l> :nohlsearch<CR>
+
+autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o " Disable auto-insertion of comments (http://vim.wikia.com/wiki/Disable_automatic_comment_insertion)

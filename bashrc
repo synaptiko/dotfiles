@@ -16,9 +16,11 @@ PS1='\[\e[0;32m\]\u\[\e[m\]@\h \[\e[0;34m\]\w\[\e[m\] \[\e[0;32m\]\$\[\e[m\] '
 BROWSER=/usr/bin/xdg-open
 
 export EDITOR=nvim
-if [[ $TERM == 'xterm-256color' ]]; then
-	export NVIM_TUI_ENABLE_TRUE_COLOR=1
-fi
+
+# NVIM_TUI_ENABLE_TRUE_COLOR is problematic in Gnome Terminal: when :term is called inside Neovim colors are incorrect
+# if [[ $TERM == 'xterm-256color' ]]; then
+#	export NVIM_TUI_ENABLE_TRUE_COLOR=1
+# fi
 export TERM=gnome-256color
 
 # Setting ag as the default source for fzf
