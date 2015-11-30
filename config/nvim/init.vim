@@ -33,6 +33,8 @@ Plug 'morhetz/gruvbox'
 Plug 'synaptiko/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'inside/vim-grep-operator'
+" Plug 'justinmk/vim-sneak' " TODO maybe later? but it seems to be useful
+" Plug 'easymotion/vim-easymotion' " TODO this is also interesting... but maybe quite complex
 call plug#end()
 
 " The Silver Searcher
@@ -71,3 +73,12 @@ nmap <M-R> :FzzBLines<CR>
 nmap <C-l> :nohlsearch<CR>
 
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o " Disable auto-insertion of comments (http://vim.wikia.com/wiki/Disable_automatic_comment_insertion)
+
+" Following ensures that fzf will be always set correctly, even when run from nvim-wrapper
+" (see https://github.com/fmoralesc/neovim-gnome-terminal-wrapper/pull/9#issuecomment-160473798)
+let $FZF_DEFAULT_COMMAND='ag -g ""'
+let $FZF_DEFAULT_OPTS='--reverse --inline-info'
+
+" Useful for highlight introspection and overrides:
+" http://yanpritzker.com/2012/04/17/how-to-change-vim-syntax-colors-that-are-annoying-you/
+" nmap ,hi :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<' . synIDattr(synID(line("."),col("."),0),"name") . "> lo<" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">" . " FG:" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"fg#")<CR>

@@ -8,6 +8,8 @@
 alias ls='ls -h --group-directories-first --time-style=+"%d.%m.%Y %H:%M" --color=auto -F'
 alias ll='ls -lh --group-directories-first --time-style=+"%d.%m.%Y %H:%M" --color=auto -F'
 alias la='ls -lAh --group-directories-first --time-style=+"%d.%m.%Y %H:%M" --color=auto -F'
+alias lt='ls -lth --group-directories-first --time-style=+"%d.%m.%Y %H:%M" --color=auto -F'
+alias ltag='ls -t | ag'
 alias grep='grep --color=tty -d skip'
 alias df='df -h'
 
@@ -25,7 +27,7 @@ export TERM=gnome-256color
 
 # Setting ag as the default source for fzf
 export FZF_DEFAULT_COMMAND='ag -g ""'
-export FZF_DEFAULT_OPTS="--reverse --inline-info"
+export FZF_DEFAULT_OPTS='--reverse --inline-info'
 
 # clean-up recently used because I don't like it
 echo -n > $HOME/.local/share/recently-used.xbel
