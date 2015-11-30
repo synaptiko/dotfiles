@@ -23,7 +23,7 @@ set list
 set title
 
 let mapleader='\'
-map <SPACE> <Leader>
+map <SPACE> <leader>
 
 call plug#begin('~/.config/nvim/plugged')
 Plug 'bling/vim-airline'
@@ -66,13 +66,26 @@ let g:fzf_layout={ 'window': 'topleft 14new' }
 nmap <leader>g <Plug>GrepOperatorOnCurrentDirectory
 vmap <leader>g <Plug>GrepOperatorOnCurrentDirectory
 
-nmap <C-p> :FzzFiles<CR>
-nmap <C-e> :FzzBuffers<CR>
-nmap <M-R> :FzzBLines<CR>
+nmap <silent> <C-p> :FzzFiles<CR>
+nmap <silent> <C-e> :FzzBuffers<CR>
+nmap <silent> <M-R> :FzzBLines<CR>
+nmap <silent> <leader>j :FzzFiles<CR>
+nmap <silent> <leader>k :FzzBuffers<CR>
+nmap <silent> <leader>l :FzzBLines<CR>
 
-nmap <C-l> :nohlsearch<CR>
+" Previous solution: nmap <silent> <C-l> :nohlsearch<CR>
+" More solutions here: http://stackoverflow.com/questions/657447/vim-clear-last-search-highlighting
+nnoremap <C-l> :let @/ = ""<CR><C-l>
+
+" TODO remap also Tab/S-Tab in normal and visual mode?
+imap <Tab> <C-t>
+imap <S-Tab> <C-d>
 
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o " Disable auto-insertion of comments (http://vim.wikia.com/wiki/Disable_automatic_comment_insertion)
+
+" cindent is terrible, smartindent is enough for most cases (and specialized js plugins are terribly complex)
+" TODO someday look at this: http://stackoverflow.com/a/20127451
+autocmd FileType javascript setlocal nocindent smartindent
 
 " Following ensures that fzf will be always set correctly, even when run from nvim-wrapper
 " (see https://github.com/fmoralesc/neovim-gnome-terminal-wrapper/pull/9#issuecomment-160473798)
