@@ -11,6 +11,7 @@ $ ./init.sh
 - Guake configuration
 - Gnome Terminal configuration
 - MOC configuration
+- Tmux configuration
 
 ## Recommended packages
 I'm using Arch Linux with following packages preinstalled:
@@ -25,3 +26,4 @@ I'm using Arch Linux with following packages preinstalled:
 - the\_silver\_searcher
 - fzf (aur)
 - xsel
+- tmux

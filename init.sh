@@ -60,3 +60,11 @@ if [[ ! -d $MOC_DIR || ! -f $MOC_DIR/config ]]; then
 	echo "MOC configured"
 	echo
 fi
+
+TMUX_CONF=~/.tmux.conf
+if [[ ! -f $TMUX_CONF ]]; then
+	echo "Initializing Tmux configuration"
+	ln -s $DIR/tmux.conf $TMUX_CONF
+	echo "Tmux configured"
+	echo
+fi
