@@ -73,6 +73,8 @@ nmap <silent> <leader>j :FzzFiles<CR>
 nmap <silent> <leader>k :FzzBuffers<CR>
 nmap <silent> <leader>l :FzzBLines<CR>
 
+nmap <silent> <leader>s :w<CR>
+
 " Previous solution: nmap <silent> <C-l> :nohlsearch<CR>
 " More solutions here: http://stackoverflow.com/questions/657447/vim-clear-last-search-highlighting
 nnoremap <C-l> :let @/ = ""<CR><C-l>
