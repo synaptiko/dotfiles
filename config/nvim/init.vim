@@ -66,18 +66,18 @@ let g:fzf_layout={ 'window': 'topleft 14new' }
 nmap <leader>g <Plug>GrepOperatorOnCurrentDirectory
 vmap <leader>g <Plug>GrepOperatorOnCurrentDirectory
 
-nmap <silent> <C-p> :FzzFiles<CR>
-nmap <silent> <C-e> :FzzBuffers<CR>
-nmap <silent> <M-R> :FzzBLines<CR>
+" nmap <silent> <C-p> :FzzFiles<CR>
+" nmap <silent> <C-e> :FzzBuffers<CR>
+" nmap <silent> <M-R> :FzzBLines<CR>
 nmap <silent> <leader>j :FzzFiles<CR>
 nmap <silent> <leader>k :FzzBuffers<CR>
 nmap <silent> <leader>l :FzzBLines<CR>
 
 nmap <silent> <leader>s :w<CR>
 
-" Previous solution: nmap <silent> <C-l> :nohlsearch<CR>
+" Previous solution: nnoremap <C-l> :let @/ = ""<CR><C-l>
 " More solutions here: http://stackoverflow.com/questions/657447/vim-clear-last-search-highlighting
-nnoremap <C-l> :let @/ = ""<CR><C-l>
+nmap <silent> <C-l> :nohlsearch<CR>
 
 " TODO remap also Tab/S-Tab in normal and visual mode?
 imap <Tab> <C-t>
