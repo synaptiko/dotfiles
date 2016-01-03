@@ -33,6 +33,7 @@ Plug 'morhetz/gruvbox'
 Plug 'synaptiko/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'inside/vim-grep-operator'
+Plug 'jamessan/vim-gnupg'
 " Plug 'justinmk/vim-sneak' " TODO maybe later? but it seems to be useful
 " Plug 'easymotion/vim-easymotion' " TODO this is also interesting... but maybe quite complex
 call plug#end()
