@@ -22,12 +22,13 @@ FONTS_DIR=~/.local/share/fonts
 if [[ ! -d $FONTS_DIR || ! -f $FONTS_DIR/FantasqueSansMono-Regular.otf ]]; then
 	echo "Initializing fonts"
 	mkdir -p $FONTS_DIR
-	curl -sfLo $FONTS_DIR/FantasqueSansMono.tar.gz \
-		https://github.com/belluzj/fantasque-sans/releases/download/v1.7-alpha.2/FantasqueSansMono.tar.gz
-	tar -xzf $FONTS_DIR/FantasqueSansMono.tar.gz -C $FONTS_DIR --wildcards *.ttf OTF
-	mv $FONTS_DIR/OTF/*.otf $FONTS_DIR
-	rmdir $FONTS_DIR/OTF
-	rm $FONTS_DIR/FantasqueSansMono.tar.gz
+	curl -sfLo $FONTS_DIR/FantasqueSansMono.zip \
+		https://github.com/belluzj/fantasque-sans/releases/download/v1.7.0/FantasqueSansMono.zip
+	mkdir $FONTS_DIR/FantasqueSansMono
+	unzip - $FONTS_DIR/FantasqueSansMono.zip -d $FONTS_DIR/FantasqueSansMono
+	mv $FONTS_DIR/FantasqueSansMono/OTF/*.otf $FONTS_DIR
+	rm -r $FONTS_DIR/FantasqueSansMono
+	rm $FONTS_DIR/FantasqueSansMono.zip
 	fc-cache -f $FONTS_DIR
 	echo "Font Fantasque Sans Mono installed"
 	echo
