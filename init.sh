@@ -19,36 +19,31 @@ if [ ! -d $NVIM_DIR ]; then
 fi
 
 FONTS_DIR=~/.local/share/fonts
+FANTASQUE_DIR=$FONTS_DIR/FantasqueSansMono
 if [[ ! -d $FONTS_DIR || ! -f $FONTS_DIR/FantasqueSansMono-Regular.otf ]]; then
 	echo "Initializing fonts"
 	mkdir -p $FONTS_DIR
 	curl -sfLo $FONTS_DIR/FantasqueSansMono.zip \
 		https://github.com/belluzj/fantasque-sans/releases/download/v1.7.0/FantasqueSansMono.zip
-	mkdir $FONTS_DIR/FantasqueSansMono
-	unzip - $FONTS_DIR/FantasqueSansMono.zip -d $FONTS_DIR/FantasqueSansMono
-	mv $FONTS_DIR/FantasqueSansMono/OTF/*.otf $FONTS_DIR
-	rm -r $FONTS_DIR/FantasqueSansMono
+	mkdir $FANTASQUE_DIRFONTS_DIR
+	unzip - $FONTS_DIR/FantasqueSansMono.zip -d $FANTASQUE_DIR
+	mv $FANTASQUE_DIR/OTF/*.otf $FONTS_DIR
+	rm -r $FANTASQUE_DIR
 	rm $FONTS_DIR/FantasqueSansMono.zip
 	fc-cache -f $FONTS_DIR
 	echo "Font Fantasque Sans Mono installed"
 	echo
 fi
 
-GUAKE_DIR=~/.config/gconf/apps/guake
-if [ ! -d $GUAKE_DIR ]; then
-	# TODO could be replaced by usage of "gconftool-2 --dump /apps/guake"
-	echo "Initializing Guake configuration"
-	mkdir -p $GUAKE_DIR
-	rmdir $GUAKE_DIR
-	ln -s $DIR/config/gconf/apps/guake $GUAKE_DIR
-	echo "Guake configured"
-	echo
-fi
+# File guake-settings.xml can be retrieved by: ./dump-guake-settings.sh
+echo "Initializing Guake configuration"
+gconftool-2 --load $DIR/guake-settings.xml
+echo "Guake configured"
+echo
 
-# File gnome-terminal.conf can be retrieved by:
-# dconf dump /org/gnome/terminal/ > ~/.files/gnome-terminal.conf
+# File gnome-terminal.conf can be retrieved by: ./dump-gnome-terminal-settings.sh
 echo "Initializing Gnome Terminal configuration"
-dconf load /org/gnome/terminal/ < $DIR/gnome-terminal.conf
+dconf load /org/gnome/terminal/ < $DIR/gnome-terminal-settings.conf
 echo "Gnome Terminal configured"
 echo
 
