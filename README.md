@@ -12,6 +12,7 @@ $ ./init.sh
 - Gnome Terminal configuration
 - MOC configuration
 - Tmux configuration
+- Avatar installation for Accounts Service
 
 ## Recommended packages
 I'm using Arch Linux with following packages preinstalled:

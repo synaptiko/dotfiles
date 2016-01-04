@@ -64,3 +64,19 @@ if [[ ! -f $TMUX_CONF ]]; then
 	echo "Tmux configured"
 	echo
 fi
+
+AVATAR_FILE=/var/lib/AccountsService/icons/jprokop.png
+if [[ ! -f $AVATAR_FILE ]]; then
+	echo "Downloading avatar from Gravatar.com"
+	EMAIL_HASH=$(echo -n jiri-prokop@synaptiko.cz | md5sum - | cut -d " " -f 1)
+	wget --quiet -O jprokop.png http://www.gravatar.com/avatar/${EMAIL_HASH}.png
+	sudo mv jprokop.png $AVATAR_FILE
+	echo "Avatar installed"
+	echo "One manual step required:"
+	cat <<EOF
+# vim /var/lib/AccountsService/users/jprokop
+=> add following line under [user] section:
+Icon=$AVATAR_FILE
+EOF
+	echo
+fi
