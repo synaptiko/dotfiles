@@ -1,16 +1,16 @@
 <?xml version="1.0"?>
 <gconf>
-	<entry name="allow_bold" mtime="1448479326" type="bool" value="true"/>
-	<entry name="palette_name" mtime="1448388266" type="string">
+	<entry name="palette_name" mtime="1451906161" type="string">
 		<stringvalue>Custom</stringvalue>
 	</entry>
-	<entry name="style" mtime="1448479363" type="string">
+	<entry name="palette" mtime="1451906161" type="string">
+		<stringvalue>#282828282828:#cccc24241d1d:#989897971a1a:#d7d799992121:#454585858888:#b1b162628686:#68689d9d6a6a:#a8a899998484:#929283837474:#fbfb49493434:#b8b8bbbb2626:#fafabdbd2f2f:#8383a5a59898:#d3d386869b9b:#8e8ec0c07c7c:#ebebdbdbb2b2:#ebebdbdbb2b2:#1d1d20202121</stringvalue>
+	</entry>
+	<entry name="allow_bold" mtime="1451906161" type="bool" value="true"/>
+	<entry name="style" mtime="1451906161" type="string">
 		<stringvalue>Fantasque Sans Mono 14</stringvalue>
 	</entry>
-	<entry name="color" mtime="1448388146" type="string">
+	<entry name="color" mtime="1451906161" type="string">
 		<stringvalue>#ebebdbdbb2b2</stringvalue>
-	</entry>
-	<entry name="palette" mtime="1448388266" type="string">
-		<stringvalue>#282828282828:#cccc24241d1d:#989897971a1a:#d7d799992121:#454585858888:#b1b162628686:#68689d9d6a6a:#a8a899998484:#929283837474:#fbfb49493434:#b8b8bbbb2626:#fafabdbd2f2f:#8383a5a59898:#d3d386869b9b:#8e8ec0c07c7c:#ebebdbdbb2b2:#ebebdbdbb2b2:#1d1d20202121</stringvalue>
 	</entry>
 </gconf>

@@ -27,3 +27,4 @@ I'm using Arch Linux with following packages preinstalled:
 - fzf (aur)
 - xsel
 - tmux
+- python2-gconf
