@@ -22,9 +22,13 @@ I'm using Arch Linux with following packages preinstalled:
 - neovim-symlinks (aur)
 - neovim-gnome-terminal-wrapper (aur)
 - gconf
+- python2-gconf
 - dconf
 - the\_silver\_searcher
 - fzf (aur)
 - xsel
 - tmux
-- python2-gconf
+
+## Useful packages
+- gconf-editor (to inspect Guake settings)
+- dconf-editor (to inspect Gnome Shell Extensions)
