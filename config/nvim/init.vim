@@ -75,6 +75,8 @@ nmap <silent> <leader>k :FzzBuffers<CR>
 nmap <silent> <leader>l :FzzBLines<CR>
 
 nmap <silent> <leader>s :w<CR>
+" TODO add t for visual mode, so it will pre-search term in FzzFiles
+nmap <silent> <leader>t :tabe<CR>:FzzFiles<CR>
 
 " Previous solution: nnoremap <C-l> :let @/ = ""<CR><C-l>
 " More solutions here: http://stackoverflow.com/questions/657447/vim-clear-last-search-highlighting
