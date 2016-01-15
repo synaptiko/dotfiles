@@ -88,7 +88,7 @@ imap <Tab> <C-t>
 imap <S-Tab> <C-d>
 
 " Better mapping related to the terminal and window movements
-tnoremap <Esc> <C-\><C-n>
+tnoremap <Esc> <Esc><C-\><C-n>
 tnoremap <A-h> <C-\><C-n><C-w>h
 tnoremap <A-j> <C-\><C-n><C-w>j
 tnoremap <A-k> <C-\><C-n><C-w>k
