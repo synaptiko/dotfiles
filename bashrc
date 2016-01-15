@@ -29,7 +29,4 @@ export TERM=gnome-256color
 export FZF_DEFAULT_COMMAND='ag -g ""'
 export FZF_DEFAULT_OPTS='--reverse --inline-info'
 
-# clean-up recently used because I don't like it
-echo -n > $HOME/.local/share/recently-used.xbel
-
 complete -cf sudo
