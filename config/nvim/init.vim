@@ -34,6 +34,7 @@ Plug 'synaptiko/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'inside/vim-grep-operator'
 Plug 'jamessan/vim-gnupg'
+Plug 'artnez/vim-wipeout'
 " Plug 'justinmk/vim-sneak' " TODO maybe later? but it seems to be useful
 " Plug 'easymotion/vim-easymotion' " TODO this is also interesting... but maybe quite complex
 call plug#end()
@@ -85,6 +86,23 @@ nmap <silent> <C-l> :nohlsearch<CR>
 " TODO remap also Tab/S-Tab in normal and visual mode?
 imap <Tab> <C-t>
 imap <S-Tab> <C-d>
+
+" Better mapping related to the terminal and window movements
+tnoremap <Esc> <C-\><C-n>
+tnoremap <A-h> <C-\><C-n><C-w>h
+tnoremap <A-j> <C-\><C-n><C-w>j
+tnoremap <A-k> <C-\><C-n><C-w>k
+tnoremap <A-l> <C-\><C-n><C-w>l
+nnoremap <A-h> <C-w>h
+nnoremap <A-j> <C-w>j
+nnoremap <A-k> <C-w>k
+nnoremap <A-l> <C-w>l
+
+" Useful abbreviations
+ab fixme // FIXME jprokop:
+ab todo // TODO jprokop:
+ab clog console.log();<Left><Left>
+ab dbg debugger;
 
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o " Disable auto-insertion of comments (http://vim.wikia.com/wiki/Disable_automatic_comment_insertion)
 
