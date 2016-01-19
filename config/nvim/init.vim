@@ -5,9 +5,11 @@ set tabstop=2
 set softtabstop=2
 set shiftwidth=2
 set noexpandtab
-set virtualedit=onemore             " Allow for cursor beyond last character
+" set virtualedit=onemore             " Allow for cursor beyond last character
 set history=1000                    " Store a ton of history (default is 20)
 set number                          " Line numbers on
+set ignorecase                      " Ignore case-sensitive search
+set smartcase                       " And switch on smart-case search
 set incsearch                       " Find as you type search
 set hlsearch                        " Highlight search terms
 set scrolljump=3                    " Lines to scroll when cursor leaves screen
@@ -32,7 +34,7 @@ Plug 'airblade/vim-gitgutter'
 Plug 'morhetz/gruvbox'
 Plug 'synaptiko/fzf'
 Plug 'junegunn/fzf.vim'
-Plug 'inside/vim-grep-operator'
+" Plug 'inside/vim-grep-operator'
 Plug 'jamessan/vim-gnupg'
 Plug 'artnez/vim-wipeout'
 Plug 'rust-lang/rust.vim'
@@ -66,8 +68,8 @@ let g:gitgutter_realtime=1
 let g:fzf_command_prefix='Fzz'
 let g:fzf_layout={ 'window': 'topleft 14new' }
 
-nmap <leader>g <Plug>GrepOperatorOnCurrentDirectory
-vmap <leader>g <Plug>GrepOperatorOnCurrentDirectory
+" nmap <leader>g <Plug>GrepOperatorOnCurrentDirectory
+" vmap <leader>g <Plug>GrepOperatorOnCurrentDirectory
 
 " nmap <silent> <C-p> :FzzFiles<CR>
 " nmap <silent> <C-e> :FzzBuffers<CR>
@@ -84,7 +86,10 @@ nmap <silent> <leader>t :tabe<CR>:FzzFiles<CR>
 " More solutions here: http://stackoverflow.com/questions/657447/vim-clear-last-search-highlighting
 nmap <silent> <C-l> :nohlsearch<CR>
 
-" TODO remap also Tab/S-Tab in normal and visual mode?
+nmap <Tab> >>
+nmap <S-Tab> <<
+vmap <Tab> >gv
+vmap <S-Tab> <gv
 imap <Tab> <C-t>
 imap <S-Tab> <C-d>
 
