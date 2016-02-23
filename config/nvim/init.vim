@@ -1,5 +1,3 @@
-filetype plugin indent on
-syntax on
 scriptencoding uft-8
 set tabstop=2
 set softtabstop=2
@@ -38,6 +36,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'jamessan/vim-gnupg'
 Plug 'artnez/vim-wipeout'
 Plug 'rust-lang/rust.vim'
+Plug 'junegunn/goyo.vim'
 " Plug 'justinmk/vim-sneak' " TODO maybe later? but it seems to be useful
 " Plug 'easymotion/vim-easymotion' " TODO this is also interesting... but maybe quite complex
 call plug#end()
@@ -68,6 +67,10 @@ let g:gitgutter_realtime=1
 let g:fzf_command_prefix='Fzz'
 let g:fzf_layout={ 'window': 'topleft 14new' }
 
+let g:goyo_width=100
+let g:goyo_height=100
+let g:goyo_linenr=1
+
 " nmap <leader>g <Plug>GrepOperatorOnCurrentDirectory
 " vmap <leader>g <Plug>GrepOperatorOnCurrentDirectory
 
@@ -93,6 +96,14 @@ vmap <S-Tab> <gv
 imap <Tab> <C-t>
 imap <S-Tab> <C-d>
 
+nmap <A-i> <PageUp>
+nmap <A-m> <PageDown>
+
+vmap <silent> <leader>c "*ygv"+y
+nmap <silent> <leader>c "*yy"+yy
+nmap <silent> <leader>v :set paste<CR>a<C-r>*<Esc>:set nopaste<CR>
+nmap <silent> <leader>V :set paste<CR>o<C-r>*<Esc>:set nopaste<CR>
+
 " Better mapping related to the terminal and window movements
 tnoremap <Esc> <Esc><C-\><C-n>
 tnoremap <A-h> <C-\><C-n><C-w>h
@@ -103,6 +114,14 @@ nnoremap <A-h> <C-w>h
 nnoremap <A-j> <C-w>j
 nnoremap <A-k> <C-w>k
 nnoremap <A-l> <C-w>l
+tmap <leader>wh <A-h>
+tmap <leader>wj <A-j>
+tmap <leader>wk <A-k>
+tmap <leader>wl <A-l>
+nmap <leader>wh <A-h>
+nmap <leader>wj <A-j>
+nmap <leader>wk <A-k>
+nmap <leader>wl <A-l>
 
 " Useful abbreviations
 ab fixme // FIXME jprokop:
