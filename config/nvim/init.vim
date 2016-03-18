@@ -37,6 +37,7 @@ Plug 'jamessan/vim-gnupg'
 Plug 'artnez/vim-wipeout'
 Plug 'rust-lang/rust.vim'
 Plug 'junegunn/goyo.vim'
+Plug 'mhinz/vim-grepper'
 " Plug 'justinmk/vim-sneak' " TODO maybe later? but it seems to be useful
 " Plug 'easymotion/vim-easymotion' " TODO this is also interesting... but maybe quite complex
 call plug#end()
@@ -67,9 +68,12 @@ let g:gitgutter_realtime=1
 let g:fzf_command_prefix='Fzz'
 let g:fzf_layout={ 'window': 'topleft 14new' }
 
-let g:goyo_width=100
-let g:goyo_height=100
+let g:goyo_width='100%'
+let g:goyo_height='100%'
 let g:goyo_linenr=1
+
+nmap gs <plug>(GrepperOperator)
+xmap gs <plug>(GrepperOperator)
 
 " nmap <leader>g <Plug>GrepOperatorOnCurrentDirectory
 " vmap <leader>g <Plug>GrepOperatorOnCurrentDirectory
@@ -81,9 +85,29 @@ nmap <silent> <leader>j :FzzFiles<CR>
 nmap <silent> <leader>k :FzzBuffers<CR>
 nmap <silent> <leader>l :FzzBLines<CR>
 
+" small experiment, not finished at all
+" vmap <expr> <silent> <leader>z '' . s:Test1() . '<Esc>:FzzFiles<CR>' . s:Test2()
+" function! s:Test1 ()
+	" normal! gvy
+	" return ''
+" endfunction
+" function! s:Test2 ()
+	" return @@
+" endfunction
+" https://github.com/inside/vim-grep-operator/blob/master/autoload/grep_operator.vim
+" http://stackoverflow.com/questions/14632109/passing-register-name-in-mapping-to-an-ex-command
+" http://vimdoc.sourceforge.net/htmldoc/visual.html#visual-operators
+" http://www.ibm.com/developerworks/library/l-vim-script-2/index.html
+
 nmap <silent> <leader>s :w<CR>
 " TODO add t for visual mode, so it will pre-search term in FzzFiles
-nmap <silent> <leader>t :tabe<CR>:FzzFiles<CR>
+" nmap <silent> <leader>t :tabe<CR>:FzzFiles<CR>
+" try it without fzf for now
+nmap <silent> <leader>t :tabe<CR>
+nmap <silent> <leader>g :Goyo<CR>
+nmap <silent> <leader>q :q<CR>
+nmap <silent> <leader>[ <Plug>GitGutterNextHunk
+nmap <silent> <leader>] <Plug>GitGutterPrevHunk
 
 " Previous solution: nnoremap <C-l> :let @/ = ""<CR><C-l>
 " More solutions here: http://stackoverflow.com/questions/657447/vim-clear-last-search-highlighting
@@ -122,6 +146,9 @@ nmap <leader>wh <A-h>
 nmap <leader>wj <A-j>
 nmap <leader>wk <A-k>
 nmap <leader>wl <A-l>
+
+" Allow saving of files as sudo when I forgot to start vim using sudo.
+cmap w!! w !sudo tee > /dev/null %
 
 " Useful abbreviations
 ab fixme // FIXME jprokop:
