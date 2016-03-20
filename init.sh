@@ -35,12 +35,6 @@ if [[ ! -d $FONTS_DIR || ! -f $FONTS_DIR/FantasqueSansMono-Regular.otf ]]; then
 	echo
 fi
 
-# File guake-settings.xml can be retrieved by: ./dump-guake-settings.sh
-echo "Initializing Guake configuration"
-gconftool-2 --load $DIR/guake-settings.xml
-echo "Guake configured"
-echo
-
 # File gnome-terminal.conf can be retrieved by: ./dump-gnome-terminal-settings.sh
 echo "Initializing Gnome Terminal configuration"
 dconf load /org/gnome/terminal/ < $DIR/gnome-terminal-settings.conf

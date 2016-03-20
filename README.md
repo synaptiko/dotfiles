@@ -8,7 +8,6 @@ $ ./init.sh
 ## My .files contains:
 - Neovim configuration
 - Custom font
-- Guake configuration
 - Gnome Terminal configuration
 - MOC configuration
 - Tmux configuration
@@ -17,13 +16,10 @@ $ ./init.sh
 ## Recommended packages
 I'm using Arch Linux with following packages preinstalled:
 - gnome-terminal
-- guake-git (aur)
 - moc
 - neovim-git (aur)
 - neovim-symlinks (aur)
 - neovim-gnome-terminal-wrapper (aur)
-- gconf
-- python2-gconf
 - dconf
 - the\_silver\_searcher
 - fzf (aur)
@@ -31,5 +27,4 @@ I'm using Arch Linux with following packages preinstalled:
 - tmux
 
 ## Useful packages
-- gconf-editor (to inspect Guake settings)
 - dconf-editor (to inspect Gnome Shell Extensions)
