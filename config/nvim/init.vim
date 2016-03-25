@@ -28,9 +28,9 @@ Plug 'bling/vim-airline'
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 Plug 'morhetz/gruvbox'
+Plug 'synaptiko/mintabline'
 Plug 'synaptiko/fzf'
 Plug 'junegunn/fzf.vim'
-" Plug 'inside/vim-grep-operator'
 Plug 'jamessan/vim-gnupg'
 Plug 'artnez/vim-wipeout'
 Plug 'rust-lang/rust.vim'
@@ -73,34 +73,11 @@ let g:goyo_linenr=1
 nmap gs <plug>(GrepperOperator)
 xmap gs <plug>(GrepperOperator)
 
-" nmap <leader>g <Plug>GrepOperatorOnCurrentDirectory
-" vmap <leader>g <Plug>GrepOperatorOnCurrentDirectory
-
-" nmap <silent> <C-p> :FzzFiles<CR>
-" nmap <silent> <C-e> :FzzBuffers<CR>
-" nmap <silent> <M-R> :FzzBLines<CR>
 nmap <silent> <leader>j :FzzFiles<CR>
 nmap <silent> <leader>k :FzzBuffers<CR>
 nmap <silent> <leader>l :FzzBLines<CR>
 
-" small experiment, not finished at all
-" vmap <expr> <silent> <leader>z '' . s:Test1() . '<Esc>:FzzFiles<CR>' . s:Test2()
-" function! s:Test1 ()
-	" normal! gvy
-	" return ''
-" endfunction
-" function! s:Test2 ()
-	" return @@
-" endfunction
-" https://github.com/inside/vim-grep-operator/blob/master/autoload/grep_operator.vim
-" http://stackoverflow.com/questions/14632109/passing-register-name-in-mapping-to-an-ex-command
-" http://vimdoc.sourceforge.net/htmldoc/visual.html#visual-operators
-" http://www.ibm.com/developerworks/library/l-vim-script-2/index.html
-
 nmap <silent> <leader>s :w<CR>
-" TODO add t for visual mode, so it will pre-search term in FzzFiles
-" nmap <silent> <leader>t :tabe<CR>:FzzFiles<CR>
-" try it without fzf for now
 nmap <silent> <leader>t :tabe<CR>
 nmap <silent> <leader>g :Goyo<CR>
 nmap <silent> <leader>q :q<CR>
@@ -144,6 +121,17 @@ nmap <leader>wh <A-h>
 nmap <leader>wj <A-j>
 nmap <leader>wk <A-k>
 nmap <leader>wl <A-l>
+
+" Easier jumping amongst first 9 tabs
+nmap <silent> <leader>1 1gt
+nmap <silent> <leader>2 2gt
+nmap <silent> <leader>3 3gt
+nmap <silent> <leader>4 4gt
+nmap <silent> <leader>5 5gt
+nmap <silent> <leader>6 6gt
+nmap <silent> <leader>7 7gt
+nmap <silent> <leader>8 8gt
+nmap <silent> <leader>9 9gt
 
 " Allow saving of files as sudo when I forgot to start vim using sudo.
 cmap w!! w !sudo tee > /dev/null %
@@ -192,3 +180,6 @@ function! s:fzf_statusline()
 	setlocal statusline=·
 endfunction
 autocmd! User FzfStatusLine call <SID>fzf_statusline()
+
+" Update appearance of TabLine (according to gruvbox theme)
+highlight TabLineSel guifg=#1d2021 guibg=#a89984
