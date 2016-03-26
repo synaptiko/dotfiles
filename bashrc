@@ -48,4 +48,10 @@ export NVIM_TUI_ENABLE_CURSOR_SHAPE=1
 export FZF_DEFAULT_COMMAND='ag -g ""'
 export FZF_DEFAULT_OPTS='--reverse --inline-info'
 
+# Better history handling
+export HISTCONTROL=ignoredups:erasedups  # no duplicate entries
+export HISTSIZE=100000                   # big big history
+export HISTFILESIZE=100000               # big big history
+shopt -s histappend                      # append to history, don't overwrite it
+
 complete -cf sudo
