@@ -68,3 +68,14 @@ if [[ ! -f $AVATAR_FILE ]]; then
 	echo "Avatar installed"
 	echo
 fi
+
+# Fallback for LightDM because .face file works great in `lightdm --test-mode` but not when it's really running :-(
+AVATAR_FALLBACK_FILE=/var/lib/AccountsService/icons/jprokop.png
+ACCOUNT_PROFILE_FILE=/var/lib/AccountsService/users/jprokop
+if [[ ! -f $AVATAR_FALLBACK_FILE ]]; then
+	sudo mv $AVATAR_FILE $AVATAR_FALLBACK_FILE
+	sudo echo "Icon=$AVATAR_FALLBACK_FILE" >> $ACCOUNT_PROFILE_FILE
+	echo "Avatar fallback installed"
+	echo "But check that $ACCOUNT_PROFILE_FILE has correct content!"
+	echo
+fi
