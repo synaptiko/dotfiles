@@ -24,10 +24,11 @@ let mapleader='\'
 map <SPACE> <leader>
 
 call plug#begin('~/.config/nvim/plugged')
-Plug 'bling/vim-airline'
+Plug 'morhetz/gruvbox'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
-Plug 'morhetz/gruvbox'
 Plug 'synaptiko/mintabline'
 Plug 'synaptiko/fzf'
 Plug 'junegunn/fzf.vim'
