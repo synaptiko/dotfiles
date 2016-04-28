@@ -13,6 +13,7 @@ set scrolljump=3                    " Lines to scroll when cursor leaves screen
 set scrolloff=3                     " Minimum lines to keep above and below cursor
 set nowrap                          " Do not wrap long lines
 set shortmess+=filmnrxoOtT          " Abbrev. of messages (avoids 'hit enter')
+set iskeyword+=-                    " Append hyphens, they are quite often used in SCSS and similar
 set noshowmode
 set relativenumber
 set updatetime=750
@@ -37,6 +38,7 @@ Plug 'artnez/vim-wipeout'
 Plug 'rust-lang/rust.vim'
 Plug 'junegunn/goyo.vim'
 Plug 'mhinz/vim-grepper'
+Plug 'MattesGroeger/vim-bookmarks'
 " Plug 'justinmk/vim-sneak' " TODO maybe later? but it seems to be useful
 " Plug 'easymotion/vim-easymotion' " TODO this is also interesting... but maybe quite complex
 call plug#end()
@@ -51,7 +53,7 @@ let g:gruvbox_italic=1
 let g:gruvbox_bold=1
 let g:gruvbox_termcolors=256
 let g:gruvbox_contrast_dark='hard'
-let g:gruvbox_contrast_light='soft'
+let g:gruvbox_contrast_light='hard'
 let g:gruvbox_invert_selection=0
 let g:gruvbox_sign_column='bg0'
 set background=dark
