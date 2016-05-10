@@ -139,6 +139,11 @@ nmap <silent> <leader>9 9gt
 " Allow saving of files as sudo when I forgot to start vim using sudo.
 cmap w!! w !sudo tee > /dev/null %
 
+" Avoid accidental unexpected behavior (Ctrl+Z in neovim-gnome-terminal-wrapper or Ctrl+U in insert mode)
+nmap <C-z> <nop>
+vmap <C-z> <nop>
+imap <C-u> <nop>
+
 " Useful abbreviations
 ab fixme // FIXME jprokop:
 ab todo // TODO jprokop:
