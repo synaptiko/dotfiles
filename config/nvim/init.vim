@@ -14,6 +14,7 @@ set scrolloff=3                     " Minimum lines to keep above and below curs
 set nowrap                          " Do not wrap long lines
 set shortmess+=filmnrxoOtT          " Abbrev. of messages (avoids 'hit enter')
 set iskeyword+=-                    " Append hyphens, they are quite often used in SCSS and similar
+set termguicolors                   " https://github.com/neovim/neovim/wiki/Following-HEAD#20160511
 set noshowmode
 set relativenumber
 set updatetime=750
