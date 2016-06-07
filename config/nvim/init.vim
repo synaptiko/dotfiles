@@ -40,6 +40,7 @@ Plug 'rust-lang/rust.vim'
 Plug 'junegunn/goyo.vim'
 Plug 'mhinz/vim-grepper'
 Plug 'MattesGroeger/vim-bookmarks'
+Plug 'sirtaj/vim-openscad'
 " Plug 'justinmk/vim-sneak' " TODO maybe later? but it seems to be useful
 " Plug 'easymotion/vim-easymotion' " TODO this is also interesting... but maybe quite complex
 call plug#end()

@@ -1,10 +1,48 @@
 #!/usr/bin/bash
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
-# TODO add .bashrc
-#echo "Initializing Bash configuration"
-#echo -n
+BASHRC_FILE=~/.bashrc
+if [ ! -e $BASHRC_FILE ]; then
+	echo "Initializing Bash configuration"
+	ln -s $DIR/bashrc $BASHRC_FILE
+	echo "Bash configured"
+	echo
+else
+	echo "Bash configuration already exists"
+	echo "If you really want to link it re/move original $BASHRC_FILE"
+	echo
+fi
 
+BASHRC_MODULES_DIR=~/.bashrc_modules
+if [ ! -d $BASHRC_MODULES_DIR ]; then
+	mkdir -p $BASHRC_MODULES_DIR
+	echo "You can also put another modules into $BASHRC_MODULES_DIR"
+	echo
+fi
+
+# TODO solve root's .bashrc & modules more elegantly
+ROOT_BASHRC_FILE=/root/.bashrc
+if sudo ls $ROOT_BASHRC_FILE >& /dev/null; then
+	echo "Bash configuration for root already exists"
+	echo "If you really want to link it re/move original $ROOT_BASHRC_FILE"
+	echo
+else
+	echo "Initializing Bash configuration for root"
+	sudo ln -s $DIR/bashrc $ROOT_BASHRC_FILE
+	echo "Bash for root configured"
+	echo
+fi
+
+ROOT_BASHRC_MODULES_DIR=/root/.bashrc_modules
+if sudo ls $ROOT_BASHRC_MODULES_DIR >& /dev/null; then
+	echo > /dev/null # just NOP-like hack :-)
+else
+	sudo mkdir -p $ROOT_BASHRC_MODULES_DIR
+	echo "You can also put another modules into $ROOT_BASHRC_MODULES_DIR"
+	echo
+fi
+
+# TODO How to say NVIM running under root user to take config from my main user?
 NVIM_DIR=~/.config/nvim
 if [ ! -d $NVIM_DIR ]; then
 	echo "Initializing Neovim configuration"
@@ -41,21 +79,31 @@ dconf load /org/gnome/terminal/ < $DIR/gnome-terminal-settings.conf
 echo "Gnome Terminal configured"
 echo
 
-MOC_DIR=~/.moc
-if [[ ! -d $MOC_DIR || ! -f $MOC_DIR/config ]]; then
-	echo "Initializing MOC configuration"
-	mkdir -p $MOC_DIR/themes
-	ln -s $DIR/moc/config $MOC_DIR/config
-	ln -s $DIR/moc/themes/jprokop_theme $MOC_DIR/themes/jprokop_theme
-	echo "MOC configured"
+if pacman -Qs moc >& /dev/null; then
+	MOC_DIR=~/.moc
+	if [[ ! -d $MOC_DIR || ! -f $MOC_DIR/config ]]; then
+		echo "Initializing MOC configuration"
+		mkdir -p $MOC_DIR/themes
+		ln -s $DIR/moc/config $MOC_DIR/config
+		ln -s $DIR/moc/themes/jprokop_theme $MOC_DIR/themes/jprokop_theme
+		echo "MOC configured"
+		echo
+	fi
+else
+	echo "MOC is not installed; ignoring its configuration"
 	echo
 fi
 
-TMUX_CONF=~/.tmux.conf
-if [[ ! -f $TMUX_CONF ]]; then
-	echo "Initializing Tmux configuration"
-	ln -s $DIR/tmux.conf $TMUX_CONF
-	echo "Tmux configured"
+if pacman -Qs tmux >& /dev/null; then
+	TMUX_CONF=~/.tmux.conf
+	if [[ ! -f $TMUX_CONF ]]; then
+		echo "Initializing Tmux configuration"
+		ln -s $DIR/tmux.conf $TMUX_CONF
+		echo "Tmux configured"
+		echo
+	fi
+else
+	echo "Tmux is not installed; ignoring its configuration"
 	echo
 fi
 

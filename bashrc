@@ -12,7 +12,8 @@ alias lt='ls --group-directories-first --time-style=+"%d.%m.%Y %H:%M" --color=au
 alias ltag='ls -t | ag'
 alias grep='grep --color=tty -d skip'
 alias df='df -h'
-alias up='sudo pacman -Syu'
+#alias up='sudo pacman -Syu'
+alias up='sudo systemctl start reflector && sudo pacman -Syu' # TODO prepare better update script! also it should be probably in its own module
 
 # git
 alias gs='git status'
@@ -27,9 +28,14 @@ alias gpl='git pull --rebase'
 alias gps='git push'
 alias gsth='git stash'
 alias gstp='git stash pop'
+alias gfp='git fetch --prune'
+alias gco='git checkout'
 
-# TODO add PS1 for root also
-PS1='\[\e[0;32m\]\u\[\e[m\]@\h \[\e[0;34m\]\w\[\e[m\] \[\e[0;32m\]\$\[\e[m\] '
+if [ "$USER" == "root" ]; then
+	PS1='\[\e[0;31m\]\u\[\e[m\]@\h \[\e[0;34m\]\w\[\e[m\] \[\e[0;31m\]\$\[\e[m\] '
+else
+	PS1='\[\e[0;32m\]\u\[\e[m\]@\h \[\e[0;34m\]\w\[\e[m\] \[\e[0;32m\]\$\[\e[m\] '
+fi
 BROWSER=/usr/bin/xdg-open
 
 export EDITOR=nvim
@@ -56,3 +62,9 @@ shopt -s histappend                      # append to history, don't overwrite it
 export PROMPT_COMMAND="history -a; $PROMPT_COMMAND" # update histfile after every command
 
 complete -cf sudo
+
+if ls ~/.bashrc_modules/* >& /dev/null; then
+	for module in ~/.bashrc_modules/*; do
+		source ${module}
+	done
+fi
