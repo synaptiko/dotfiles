@@ -37,10 +37,10 @@ Plug 'junegunn/fzf.vim'
 Plug 'jamessan/vim-gnupg'
 Plug 'artnez/vim-wipeout'
 Plug 'rust-lang/rust.vim'
-Plug 'junegunn/goyo.vim'
 Plug 'mhinz/vim-grepper'
 Plug 'MattesGroeger/vim-bookmarks'
 Plug 'sirtaj/vim-openscad'
+Plug 'vim-scripts/ReplaceWithRegister'
 " Plug 'justinmk/vim-sneak' " TODO maybe later? but it seems to be useful
 " Plug 'easymotion/vim-easymotion' " TODO this is also interesting... but maybe quite complex
 call plug#end()
@@ -71,10 +71,6 @@ let g:gitgutter_realtime=1
 let g:fzf_command_prefix='Fzz'
 let g:fzf_layout={ 'window': 'topleft 14new' }
 
-let g:goyo_width='100%'
-let g:goyo_height='100%'
-let g:goyo_linenr=1
-
 nmap gs <plug>(GrepperOperator)
 xmap gs <plug>(GrepperOperator)
 
@@ -84,7 +80,6 @@ nmap <silent> <leader>l :FzzBLines<CR>
 
 nmap <silent> <leader>s :w<CR>
 nmap <silent> <leader>t :tabe<CR>
-nmap <silent> <leader>g :Goyo<CR>
 nmap <silent> <leader>q :q<CR>
 nmap <silent> <leader>[ <Plug>GitGutterNextHunk
 nmap <silent> <leader>] <Plug>GitGutterPrevHunk
@@ -137,6 +132,14 @@ nmap <silent> <leader>6 6gt
 nmap <silent> <leader>7 7gt
 nmap <silent> <leader>8 8gt
 nmap <silent> <leader>9 9gt
+
+" Tabs can be easily moved (similar to Ctrl+Shift+PageDown/Up)
+nmap <silent> mt :tabm +<CR>
+nmap <silent> mT :tabm -<CR>
+
+" Better search next/prev (always watch one place in long files)
+nnoremap <silent> n nzz
+nnoremap <silent> N Nzz
 
 " Allow saving of files as sudo when I forgot to start vim using sudo.
 cmap w!! w !sudo tee > /dev/null %

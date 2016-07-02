@@ -29,7 +29,8 @@ alias gps='git push'
 alias gsth='git stash'
 alias gstp='git stash pop'
 alias gfp='git fetch --prune'
-alias gco='git checkout'
+alias gcho='git checkout'
+alias gchrp='git cherry-pick -x'
 
 if [ "$USER" == "root" ]; then
 	PS1='\[\e[0;31m\]\u\[\e[m\]@\h \[\e[0;34m\]\w\[\e[m\] \[\e[0;31m\]\$\[\e[m\] '
