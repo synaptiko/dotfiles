@@ -196,3 +196,12 @@ autocmd! User FzfStatusLine call <SID>fzf_statusline()
 
 " Update appearance of TabLine (according to gruvbox theme)
 highlight TabLineSel guifg=#1d2021 guibg=#a89984
+
+" Convenient 'Mr.Proper for tabs and buffers' function
+function! ClearTabsAndBuffers()
+	tabedit
+	tabonly
+	sleep 10m " wait 10ms to avoid gitgutter errors
+	Wipeout
+endfunction
+nmap <leader>Q :call ClearTabsAndBuffers()<CR>
