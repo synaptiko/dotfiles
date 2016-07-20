@@ -111,7 +111,7 @@ AVATAR_FILE=~/.face
 if [[ ! -f $AVATAR_FILE ]]; then
 	echo "Downloading avatar from Gravatar.com"
 	EMAIL_HASH=$(echo -n jiri-prokop@synaptiko.cz | md5sum - | cut -d " " -f 1)
-	wget --quiet -O jprokop.png http://www.gravatar.com/avatar/${EMAIL_HASH}.png
+	wget --quiet -O jprokop.png http://www.gravatar.com/avatar/${EMAIL_HASH}.png?size=160
 	sudo mv jprokop.png $AVATAR_FILE
 	echo "Avatar installed"
 	echo
