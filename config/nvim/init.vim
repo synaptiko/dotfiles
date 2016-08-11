@@ -41,6 +41,8 @@ Plug 'mhinz/vim-grepper'
 Plug 'MattesGroeger/vim-bookmarks'
 Plug 'sirtaj/vim-openscad'
 Plug 'vim-scripts/ReplaceWithRegister'
+Plug 'scrooloose/nerdtree'
+Plug 'Xuyuanp/nerdtree-git-plugin'
 " Plug 'justinmk/vim-sneak' " TODO maybe later? but it seems to be useful
 " Plug 'easymotion/vim-easymotion' " TODO this is also interesting... but maybe quite complex
 call plug#end()
@@ -140,6 +142,9 @@ nmap <silent> mT :tabm -<CR>
 " Better search next/prev (always watch one place in long files)
 nnoremap <silent> n nzz
 nnoremap <silent> N Nzz
+
+" Better NERDTree menu mapping (m has delay because of Bookmarks plugin)
+nnoremap <silent> <leader>m :call nerdtree#ui_glue#invokeKeyMap("m")<CR>
 
 " Allow saving of files as sudo when I forgot to start vim using sudo.
 cmap w!! w !sudo tee > /dev/null %
