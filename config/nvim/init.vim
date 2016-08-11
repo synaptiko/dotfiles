@@ -160,11 +160,16 @@ ab todo // TODO jprokop:
 ab clog console.log();<Left><Left>
 ab dbg debugger;
 
-autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o " Disable auto-insertion of comments (http://vim.wikia.com/wiki/Disable_automatic_comment_insertion)
-
-" cindent is terrible, smartindent is enough for most cases (and specialized js plugins are terribly complex)
-" TODO someday look at this: http://stackoverflow.com/a/20127451
-autocmd FileType javascript setlocal nocindent smartindent
+augroup configgroup
+	autocmd!
+	" Disable auto-insertion of comments (http://vim.wikia.com/wiki/Disable_automatic_comment_insertion)
+	autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+	" cindent is terrible, smartindent is enough for most cases (and specialized js plugins are terribly complex)
+	" TODO someday look at this: http://stackoverflow.com/a/20127451
+	autocmd FileType javascript setlocal nocindent smartindent
+	" python has whitespace significant philosophy, so don't render spaces visible
+	autocmd FileType python setlocal nolist
+augroup END
 
 " Following ensures that fzf will be always set correctly, even when run from nvim-wrapper
 " (see https://github.com/fmoralesc/neovim-gnome-terminal-wrapper/pull/9#issuecomment-160473798)
