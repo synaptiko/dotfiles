@@ -105,24 +105,16 @@ nmap <silent> <leader>c "*yy"+yy
 nmap <silent> <leader>v :set paste<CR>a<C-r>*<Esc>:set nopaste<CR>
 nmap <silent> <leader>V :set paste<CR>o<C-r>*<Esc>:set nopaste<CR>
 
-" Better mapping related to the terminal and window movements
+" Better mapping related to the terminal and window movements (derived from i3)
 tnoremap <Esc> <Esc><C-\><C-n>
-tnoremap <A-h> <C-\><C-n><C-w>h
-tnoremap <A-j> <C-\><C-n><C-w>j
-tnoremap <A-k> <C-\><C-n><C-w>k
-tnoremap <A-l> <C-\><C-n><C-w>l
-nnoremap <A-h> <C-w>h
-nnoremap <A-j> <C-w>j
-nnoremap <A-k> <C-w>k
-nnoremap <A-l> <C-w>l
-tmap <leader>wh <A-h>
-tmap <leader>wj <A-j>
-tmap <leader>wk <A-k>
-tmap <leader>wl <A-l>
-nmap <leader>wh <A-h>
-nmap <leader>wj <A-j>
-nmap <leader>wk <A-k>
-nmap <leader>wl <A-l>
+tnoremap <leader>wj <C-\><C-n><C-w>h
+tnoremap <leader>wk <C-\><C-n><C-w>j
+tnoremap <leader>wl <C-\><C-n><C-w>k
+tnoremap <leader>w; <C-\><C-n><C-w>l
+nnoremap <leader>wj <C-w>h
+nnoremap <leader>wk <C-w>j
+nnoremap <leader>wl <C-w>k
+nnoremap <leader>w; <C-w>l
 
 " Easier jumping amongst first 9 tabs
 nmap <silent> <leader>1 1gt
