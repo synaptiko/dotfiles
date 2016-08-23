@@ -42,10 +42,6 @@ BROWSER=/usr/bin/xdg-open
 export EDITOR=nvim
 export VISUAL=nvim
 
-# See https://github.com/jamessan/vim-gnupg/blob/master/plugin/gnupg.vim#L32
-GPG_TTY=`tty`
-export GPG_TTY
-
 # NVIM_TUI_ENABLE_TRUE_COLOR is problematic in Gnome Terminal: when :term is called inside Neovim colors are incorrect
 # But it can be resolved in init.vim like this: https://github.com/neovim/neovim/issues/4436
 export NVIM_TUI_ENABLE_TRUE_COLOR=1
@@ -80,3 +76,17 @@ man() {
 		LESS_TERMCAP_us=$'\e[1;32m' \
 			man "$@"
 }
+
+if [ -n "$DISPLAY" ]; then
+	xset b off
+fi
+
+# Keys and related
+if [ -n "$DESKTOP_SESSION" ];then
+	eval $(gnome-keyring-daemon --start --components=gpg,pkcs11,secrets,ssh)
+	export GNOME_KEYRING_CONTROL GNOME_KEYRING_PID GPG_AGENT_INFO SSH_AUTH_SOCK
+fi
+
+# See https://github.com/jamessan/vim-gnupg/blob/master/plugin/gnupg.vim#L32
+GPG_TTY=`tty`
+export GPG_TTY
