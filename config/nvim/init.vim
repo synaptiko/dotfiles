@@ -150,7 +150,7 @@ imap <C-u> <nop>
 ab fixme // FIXME jprokop:
 ab todo // TODO jprokop:
 ab clog console.log();<Left><Left>
-ab dbg debugger;
+ab dbg debugger
 
 augroup configgroup
 	autocmd!
