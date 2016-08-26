@@ -43,6 +43,8 @@ Plug 'sirtaj/vim-openscad'
 Plug 'vim-scripts/ReplaceWithRegister'
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'tpope/vim-obsession'
+Plug 'chrisbra/Recover.vim'
 " Plug 'justinmk/vim-sneak' " TODO maybe later? but it seems to be useful
 " Plug 'easymotion/vim-easymotion' " TODO this is also interesting... but maybe quite complex
 call plug#end()
@@ -66,6 +68,7 @@ colorscheme gruvbox
 let g:airline_theme='gruvbox'
 let g:airline_powerline_fonts=1
 let g:airline#extensions#whitespace#enabled=0
+let g:airline_section_z = airline#section#create(['%{ObsessionStatus(''$'', '''')}', 'windowswap', '%3p%% ', 'linenr', ':%3v '])
 
 let g:gitgutter_sign_column_always=1
 let g:gitgutter_realtime=1
