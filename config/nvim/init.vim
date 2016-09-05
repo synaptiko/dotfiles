@@ -21,6 +21,7 @@ set updatetime=750
 set listchars=tab:  ,trail:·,space:·,nbsp:·
 set list
 set title
+set clipboard=unnamed
 
 let mapleader='\'
 map <SPACE> <leader>
@@ -47,6 +48,7 @@ Plug 'tpope/vim-obsession'
 Plug 'chrisbra/Recover.vim'
 Plug 'tpope/vim-commentary'
 Plug 'michaeljsmith/vim-indent-object'
+Plug '907th/vim-auto-save'
 " Plug 'justinmk/vim-sneak' " TODO maybe later? but it seems to be useful
 " Plug 'easymotion/vim-easymotion' " TODO this is also interesting... but maybe quite complex
 call plug#end()
@@ -75,21 +77,21 @@ let g:airline_section_z = airline#section#create(['%{ObsessionStatus(''$'', ''''
 let g:gitgutter_sign_column_always=1
 let g:gitgutter_realtime=1
 
-let g:fzf_command_prefix='Fzz'
+let g:fzf_command_prefix='Fzf'
 let g:fzf_layout={ 'window': 'topleft 14new' }
+
+let g:auto_save = 1
+let g:auto_save_silent = 1
 
 nmap gs <plug>(GrepperOperator)
 xmap gs <plug>(GrepperOperator)
 
-nmap <silent> <leader>j :FzzFiles<CR>
-nmap <silent> <leader>k :FzzBuffers<CR>
-nmap <silent> <leader>l :FzzBLines<CR>
+nmap <silent> <leader>j :FzfFiles<CR>
+nmap <silent> <leader>k :FzfBuffers<CR>
+nmap <silent> <leader>l :FzfBLines<CR>
 
-nmap <silent> <leader>s :w<CR>
-nmap <silent> <leader>t :tabe<CR>
-nmap <silent> <leader>q :q<CR>
-nmap <silent> <leader>[ <Plug>GitGutterNextHunk
-nmap <silent> <leader>] <Plug>GitGutterPrevHunk
+nmap <silent> <leader>[ <Plug>GitGutterPrevHunk
+nmap <silent> <leader>] <Plug>GitGutterNextHunk
 
 " Previous solution: nnoremap <C-l> :let @/ = ""<CR><C-l>
 " More solutions here: http://stackoverflow.com/questions/657447/vim-clear-last-search-highlighting
@@ -101,14 +103,6 @@ vmap <Tab> >gv
 vmap <S-Tab> <gv
 imap <Tab> <C-t>
 imap <S-Tab> <C-d>
-
-nmap <A-i> <PageUp>
-nmap <A-m> <PageDown>
-
-vmap <silent> <leader>c "*ygv"+y
-nmap <silent> <leader>c "*yy"+yy
-nmap <silent> <leader>v :set paste<CR>a<C-r>*<Esc>:set nopaste<CR>
-nmap <silent> <leader>V :set paste<CR>o<C-r>*<Esc>:set nopaste<CR>
 
 " Better mapping related to the terminal and window movements (derived from i3)
 tnoremap <Esc> <Esc><C-\><C-n>
@@ -140,8 +134,32 @@ nmap <silent> mT :tabm -<CR>
 nnoremap <silent> n nzz
 nnoremap <silent> N Nzz
 
-" Better NERDTree menu mapping (m has delay because of Bookmarks plugin)
-nnoremap <silent> <leader>m :call nerdtree#ui_glue#invokeKeyMap("m")<CR>
+" Better NERDTree <-> vim-bookmarks integration! (see https://github.com/MattesGroeger/vim-bookmarks#faq)
+let g:bookmark_no_default_key_mappings = 1
+function! BookmarkMapKeys()
+	nmap mm :BookmarkToggle<CR>
+	nmap mi :BookmarkAnnotate<CR>
+	nmap mn :BookmarkNext<CR>
+	nmap mp :BookmarkPrev<CR>
+	nmap ma :BookmarkShowAll<CR>
+	nmap mc :BookmarkClear<CR>
+	nmap mx :BookmarkClearAll<CR>
+	nmap mkk :BookmarkMoveUp
+	nmap mjj :BookmarkMoveDown
+endfunction
+function! BookmarkUnmapKeys()
+	unmap mm
+	unmap mi
+	unmap mn
+	unmap mp
+	unmap ma
+	unmap mc
+	unmap mx
+	unmap mkk
+	unmap mjj
+endfunction
+autocmd BufEnter * :call BookmarkMapKeys()
+autocmd BufEnter NERD_tree_* :call BookmarkUnmapKeys()
 
 " Allow saving of files as sudo when I forgot to start vim using sudo.
 cmap w!! w !sudo tee > /dev/null %
