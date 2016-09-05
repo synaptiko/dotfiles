@@ -49,6 +49,7 @@ Plug 'chrisbra/Recover.vim'
 Plug 'tpope/vim-commentary'
 Plug 'michaeljsmith/vim-indent-object'
 Plug '907th/vim-auto-save'
+Plug 'PotatoesMaster/i3-vim-syntax'
 call plug#end()
 
 " The Silver Searcher
