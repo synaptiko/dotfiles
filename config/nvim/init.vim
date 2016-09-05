@@ -49,8 +49,6 @@ Plug 'chrisbra/Recover.vim'
 Plug 'tpope/vim-commentary'
 Plug 'michaeljsmith/vim-indent-object'
 Plug '907th/vim-auto-save'
-" Plug 'justinmk/vim-sneak' " TODO maybe later? but it seems to be useful
-" Plug 'easymotion/vim-easymotion' " TODO this is also interesting... but maybe quite complex
 call plug#end()
 
 " The Silver Searcher
