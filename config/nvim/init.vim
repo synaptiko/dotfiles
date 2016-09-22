@@ -145,6 +145,9 @@ function! BookmarkMapKeys()
 	nmap mx :BookmarkClearAll<CR>
 	nmap mkk :BookmarkMoveUp
 	nmap mjj :BookmarkMoveDown
+	" Tabs can be easily moved (similar to Ctrl+Shift+PageDown/Up)
+	nmap <silent> mt :tabm +<CR>
+	nmap <silent> mT :tabm -<CR>
 endfunction
 function! BookmarkUnmapKeys()
 	unmap mm
@@ -156,6 +159,8 @@ function! BookmarkUnmapKeys()
 	unmap mx
 	unmap mkk
 	unmap mjj
+	unmap mt
+	unmap mT
 endfunction
 autocmd BufEnter * :call BookmarkMapKeys()
 autocmd BufEnter NERD_tree_* :call BookmarkUnmapKeys()
@@ -229,3 +234,6 @@ function! ClearTabsAndBuffers()
 	Wipeout
 endfunction
 nmap <leader>Q :call ClearTabsAndBuffers()<CR>
+
+" https://github.com/neovim/neovim/issues/3875#issuecomment-248553003
+highlight ColorColumn ctermbg=80
