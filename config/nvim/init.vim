@@ -234,6 +234,3 @@ function! ClearTabsAndBuffers()
 	Wipeout
 endfunction
 nmap <leader>Q :call ClearTabsAndBuffers()<CR>
-
-" https://github.com/neovim/neovim/issues/3875#issuecomment-248553003
-highlight ColorColumn ctermbg=80
