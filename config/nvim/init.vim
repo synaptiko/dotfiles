@@ -79,8 +79,10 @@ let g:gitgutter_realtime=1
 let g:fzf_command_prefix='Fzf'
 let g:fzf_layout={ 'window': 'topleft 14new' }
 
-let g:auto_save = 1
-let g:auto_save_silent = 1
+let g:auto_save=1
+let g:auto_save_silent=1
+
+let g:GPGExecutable='gpg2'
 
 nmap gs <plug>(GrepperOperator)
 xmap gs <plug>(GrepperOperator)
