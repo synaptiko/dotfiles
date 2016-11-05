@@ -19,7 +19,6 @@ I'm using Arch Linux with following packages preinstalled:
 - moc
 - neovim-git (aur)
 - neovim-symlinks (aur)
-- neovim-gnome-terminal-wrapper (aur)
 - dconf
 - the\_silver\_searcher
 - fzf (aur)
