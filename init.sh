@@ -76,6 +76,7 @@ fi
 # File gnome-terminal.conf can be retrieved by: ./dump-gnome-terminal-settings.sh
 echo "Initializing Gnome Terminal configuration"
 dconf load /org/gnome/terminal/ < $DIR/gnome-terminal-settings.conf
+$DIR/switch-gnome-terminal-theme.sh dark
 echo "Gnome Terminal configured"
 echo
 

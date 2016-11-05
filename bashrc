@@ -15,6 +15,7 @@ alias df='df -h'
 #alias up='sudo pacman -Syu'
 alias up='sudo systemctl start reflector && sudo pacman -Syu' # TODO prepare better update script! also it should be probably in its own module
 alias agjs='ag --js -Q'
+alias theme='~/.files/switch-gnome-terminal-theme.sh'
 
 # git
 alias gs='git status'

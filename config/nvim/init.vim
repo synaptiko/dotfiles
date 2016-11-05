@@ -68,6 +68,9 @@ let g:gruvbox_sign_column='bg0'
 set background=dark
 colorscheme gruvbox
 
+" To be more cooler => transparent background
+hi! Normal ctermbg=NONE guibg=NONE
+
 let g:airline_theme='gruvbox'
 let g:airline_powerline_fonts=1
 let g:airline#extensions#whitespace#enabled=0
@@ -219,6 +222,25 @@ let g:terminal_color_13 = '#d3869b'
 let g:terminal_color_14 = '#8ec07c'
 let g:terminal_color_15 = '#ebdbb2'
 
+" Light theme
+" TODO improve switching!!!
+" let g:terminal_color_0  = '#fbf1c7'
+" let g:terminal_color_1  = '#cc241d'
+" let g:terminal_color_2  = '#98971a'
+" let g:terminal_color_3  = '#d79921'
+" let g:terminal_color_4  = '#458588'
+" let g:terminal_color_5  = '#b16286'
+" let g:terminal_color_6  = '#689d6a'
+" let g:terminal_color_7  = '#7c6f64'
+" let g:terminal_color_8  = '#928374'
+" let g:terminal_color_9  = '#9d0006'
+" let g:terminal_color_10 = '#79740e'
+" let g:terminal_color_11 = '#b57614'
+" let g:terminal_color_12 = '#076678'
+" let g:terminal_color_13 = '#8f3f71'
+" let g:terminal_color_14 = '#427b58'
+" let g:terminal_color_15 = '#3c3836'
+
 " Default Fzf's status line is not useful for me
 function! s:fzf_statusline()
 	setlocal statusline=·
@@ -236,3 +258,7 @@ function! ClearTabsAndBuffers()
 	Wipeout
 endfunction
 nmap <leader>Q :call ClearTabsAndBuffers()<CR>
+
+function! SwitchTheme()
+	" finish it!
+endfunction
