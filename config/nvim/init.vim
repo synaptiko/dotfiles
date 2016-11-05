@@ -65,7 +65,7 @@ let g:gruvbox_termcolors=256
 let g:gruvbox_contrast_dark='hard'
 let g:gruvbox_contrast_light='hard'
 let g:gruvbox_invert_selection=0
-let g:gruvbox_sign_column='bg0'
+let g:gitgutter_override_sign_column_highlight=1
 colorscheme gruvbox
 
 let g:airline_theme='gruvbox'
@@ -273,9 +273,19 @@ function! SwitchTheme(variant, ...)
 	endif
 
 	" To be more cooler => transparent background
-	" FIXME it breaks airline text rendering; there are strange colors
-	" hi! Normal ctermbg=NONE guibg=NONE
+	if a:0 == 0
+		hi! Normal ctermbg=none guibg=none
+	else
+		autocmd VimEnter * hi Normal ctermbg=none guibg=none
+	endif
 endfunction
+call SwitchTheme('dark', 0) " FIXME we should detect theme according to terminal or something
 
-" FIXME implement also toggle function and map to some key!
-call SwitchTheme('dark') " FIXME we should detect theme according to terminal or something
+function! ToggleTheme()
+	if &background == 'dark'
+		call SwitchTheme('light')
+	else
+		call SwitchTheme('dark')
+	endif
+endfunction
+nmap <silent> <leader>T :call ToggleTheme()<CR>
