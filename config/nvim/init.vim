@@ -65,11 +65,7 @@ let g:gruvbox_contrast_dark='hard'
 let g:gruvbox_contrast_light='hard'
 let g:gruvbox_invert_selection=0
 let g:gruvbox_sign_column='bg0'
-set background=dark
 colorscheme gruvbox
-
-" To be more cooler => transparent background
-hi! Normal ctermbg=NONE guibg=NONE
 
 let g:airline_theme='gruvbox'
 let g:airline_powerline_fonts=1
@@ -204,43 +200,6 @@ let $FZF_DEFAULT_OPTS='--reverse --inline-info'
 " http://yanpritzker.com/2012/04/17/how-to-change-vim-syntax-colors-that-are-annoying-you/
 " nmap ,hi :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<' . synIDattr(synID(line("."),col("."),0),"name") . "> lo<" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">" . " FG:" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"fg#")<CR>
 
-" Better colors in a terminal inside Neovim (https://github.com/neovim/neovim/issues/4436)
-let g:terminal_color_0  = '#282828'
-let g:terminal_color_1  = '#cc241d'
-let g:terminal_color_2  = '#98971a'
-let g:terminal_color_3  = '#d79921'
-let g:terminal_color_4  = '#458588'
-let g:terminal_color_5  = '#b16286'
-let g:terminal_color_6  = '#689d6a'
-let g:terminal_color_7  = '#a89984'
-let g:terminal_color_8  = '#928374'
-let g:terminal_color_9  = '#fb4934'
-let g:terminal_color_10 = '#b8bb26'
-let g:terminal_color_11 = '#fabd2f'
-let g:terminal_color_12 = '#83a598'
-let g:terminal_color_13 = '#d3869b'
-let g:terminal_color_14 = '#8ec07c'
-let g:terminal_color_15 = '#ebdbb2'
-
-" Light theme
-" TODO improve switching!!!
-" let g:terminal_color_0  = '#fbf1c7'
-" let g:terminal_color_1  = '#cc241d'
-" let g:terminal_color_2  = '#98971a'
-" let g:terminal_color_3  = '#d79921'
-" let g:terminal_color_4  = '#458588'
-" let g:terminal_color_5  = '#b16286'
-" let g:terminal_color_6  = '#689d6a'
-" let g:terminal_color_7  = '#7c6f64'
-" let g:terminal_color_8  = '#928374'
-" let g:terminal_color_9  = '#9d0006'
-" let g:terminal_color_10 = '#79740e'
-" let g:terminal_color_11 = '#b57614'
-" let g:terminal_color_12 = '#076678'
-" let g:terminal_color_13 = '#8f3f71'
-" let g:terminal_color_14 = '#427b58'
-" let g:terminal_color_15 = '#3c3836'
-
 " Default Fzf's status line is not useful for me
 function! s:fzf_statusline()
 	setlocal statusline=·
@@ -259,6 +218,65 @@ function! ClearTabsAndBuffers()
 endfunction
 nmap <leader>Q :call ClearTabsAndBuffers()<CR>
 
-function! SwitchTheme()
-	" finish it!
+function! SwitchTheme(variant, ...)
+	if a:0 == 0
+		silent !clear
+
+		if a:variant == 'dark'
+			silent !~/.files/switch-gnome-terminal-theme.sh dark
+		else
+			silent !~/.files/switch-gnome-terminal-theme.sh light
+		endif
+
+		redraw!
+	endif
+
+	if a:variant == 'dark'
+		set background=dark
+
+		" Better colors in a terminal inside Neovim (https://github.com/neovim/neovim/issues/4436)
+		let g:terminal_color_0  = '#282828'
+		let g:terminal_color_1  = '#cc241d'
+		let g:terminal_color_2  = '#98971a'
+		let g:terminal_color_3  = '#d79921'
+		let g:terminal_color_4  = '#458588'
+		let g:terminal_color_5  = '#b16286'
+		let g:terminal_color_6  = '#689d6a'
+		let g:terminal_color_7  = '#a89984'
+		let g:terminal_color_8  = '#928374'
+		let g:terminal_color_9  = '#fb4934'
+		let g:terminal_color_10 = '#b8bb26'
+		let g:terminal_color_11 = '#fabd2f'
+		let g:terminal_color_12 = '#83a598'
+		let g:terminal_color_13 = '#d3869b'
+		let g:terminal_color_14 = '#8ec07c'
+		let g:terminal_color_15 = '#ebdbb2'
+	else
+		set background=light
+
+		" Better colors in a terminal inside Neovim (https://github.com/neovim/neovim/issues/4436)
+		let g:terminal_color_0  = '#fbf1c7'
+		let g:terminal_color_1  = '#cc241d'
+		let g:terminal_color_2  = '#98971a'
+		let g:terminal_color_3  = '#d79921'
+		let g:terminal_color_4  = '#458588'
+		let g:terminal_color_5  = '#b16286'
+		let g:terminal_color_6  = '#689d6a'
+		let g:terminal_color_7  = '#7c6f64'
+		let g:terminal_color_8  = '#928374'
+		let g:terminal_color_9  = '#9d0006'
+		let g:terminal_color_10 = '#79740e'
+		let g:terminal_color_11 = '#b57614'
+		let g:terminal_color_12 = '#076678'
+		let g:terminal_color_13 = '#8f3f71'
+		let g:terminal_color_14 = '#427b58'
+		let g:terminal_color_15 = '#3c3836'
+	endif
+
+	" To be more cooler => transparent background
+	" FIXME it breaks airline text rendering; there are strange colors
+	" hi! Normal ctermbg=NONE guibg=NONE
 endfunction
+
+" FIXME implement also toggle function and map to some key!
+call SwitchTheme('dark') " FIXME we should detect theme according to terminal or something
