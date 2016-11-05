@@ -50,6 +50,7 @@ Plug 'tpope/vim-commentary'
 Plug 'michaeljsmith/vim-indent-object'
 Plug '907th/vim-auto-save'
 Plug 'PotatoesMaster/i3-vim-syntax'
+Plug 'othree/yajs.vim'
 call plug#end()
 
 " The Silver Searcher
