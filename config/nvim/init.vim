@@ -44,13 +44,15 @@ Plug 'sirtaj/vim-openscad'
 Plug 'vim-scripts/ReplaceWithRegister'
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'tpope/vim-obsession'
 Plug 'chrisbra/Recover.vim'
 Plug 'tpope/vim-commentary'
 Plug 'michaeljsmith/vim-indent-object'
 Plug '907th/vim-auto-save'
 Plug 'PotatoesMaster/i3-vim-syntax'
 Plug 'othree/yajs.vim'
+Plug 'mxw/vim-jsx'
+Plug 'moll/vim-node'
+Plug 'elzr/vim-json'
 call plug#end()
 
 " The Silver Searcher
@@ -71,7 +73,6 @@ colorscheme gruvbox
 let g:airline_theme='gruvbox'
 let g:airline_powerline_fonts=1
 let g:airline#extensions#whitespace#enabled=0
-let g:airline_section_z = airline#section#create(['%{ObsessionStatus(''$'', '''')}', 'windowswap', '%3p%% ', 'linenr', ':%3v '])
 
 let g:gitgutter_sign_column_always=1
 let g:gitgutter_realtime=1
@@ -83,6 +84,8 @@ let g:auto_save=1
 let g:auto_save_silent=1
 
 let g:GPGExecutable='gpg2'
+
+let g:vim_json_syntax_conceal=0
 
 nmap gs <plug>(GrepperOperator)
 xmap gs <plug>(GrepperOperator)
@@ -222,9 +225,9 @@ function! SwitchTheme(variant, ...)
 		silent !clear
 
 		if a:variant == 'dark'
-			silent !~/.files/switch-gnome-terminal-theme.sh dark
+			silent !~/.files/switch-xfce4-terminal-theme.sh dark
 		else
-			silent !~/.files/switch-gnome-terminal-theme.sh light
+			silent !~/.files/switch-xfce4-terminal-theme.sh light
 		endif
 
 		redraw!
@@ -279,7 +282,6 @@ function! SwitchTheme(variant, ...)
 		autocmd VimEnter * hi Normal ctermbg=none guibg=none
 	endif
 endfunction
-call SwitchTheme('dark', 0) " FIXME we should detect theme according to terminal or something
 
 function! ToggleTheme()
 	if &background == 'dark'
@@ -289,3 +291,14 @@ function! ToggleTheme()
 	endif
 endfunction
 nmap <silent> <leader>T :call ToggleTheme()<CR>
+
+function! InitTheme()
+	let actualTheme = system("ls -la ~/.config/xfce4/terminal/terminalrc")
+
+	if actualTheme =~# '-light'
+		call SwitchTheme('light', 0)
+	else
+		call SwitchTheme('dark', 0)
+	endif
+endfunction
+call InitTheme()

@@ -1,6 +1,30 @@
 #!/usr/bin/env bash
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
+XINITRC_FILE=~/.xinitrc
+if [ ! -e $XINITRC_FILE ]; then
+	echo "Initializing Xinit configuration"
+	ln -s $DIR/xinitrc $XINITRC_FILE
+	echo "Xinit configured"
+	echo
+else
+	echo "Xinit configuration already exists"
+	echo "If you really want to link it re/move original $XINITRC_FILE"
+	echo
+fi
+
+BASH_PROFILE_FILE=~/.bash_profile
+if [ ! -e $BASH_PROFILE_FILE ]; then
+	echo "Initializing Bash profile configuration"
+	ln -s $DIR/bash_profile $BASH_PROFILE_FILE
+	echo "Bash profile configured"
+	echo
+else
+	echo "Bash profile configuration already exists"
+	echo "If you really want to link it re/move original $BASH_PROFILE_FILE"
+	echo
+fi
+
 BASHRC_FILE=~/.bashrc
 if [ ! -e $BASHRC_FILE ]; then
 	echo "Initializing Bash configuration"
@@ -73,12 +97,17 @@ if [[ ! -d $FONTS_DIR || ! -f $FONTS_DIR/FantasqueSansMono-Regular.otf ]]; then
 	echo
 fi
 
-# File gnome-terminal.conf can be retrieved by: ./dump-gnome-terminal-settings.sh
-echo "Initializing Gnome Terminal configuration"
-dconf load /org/gnome/terminal/ < $DIR/gnome-terminal-settings.conf
-$DIR/switch-gnome-terminal-theme.sh dark
-echo "Gnome Terminal configured"
-echo
+$XFCE4_TERMINAL_FILE=~/.config/xfce4/terminal/terminalrc
+if [ ! -e $XFCE4_TERMINAL_FILE ]; then
+	echo "Initializing Xfce4 Terminal configuration"
+	ln -s $XFCE4_TERMINAL_FILE $DIR/config/xfce4/terminal/terminalrc-dark
+	echo "Xfce4 Terminal configured"
+	echo
+else
+	echo "Xfce4 Terminal configuration already exists"
+	echo "If you really want to link it re/move original $XFCE4_TERMINAL_FILE"
+	echo
+fi
 
 if pacman -Qs moc >& /dev/null; then
 	MOC_DIR=~/.moc
@@ -115,16 +144,5 @@ if [[ ! -f $AVATAR_FILE ]]; then
 	wget --quiet -O jprokop.png http://www.gravatar.com/avatar/${EMAIL_HASH}.png?size=160
 	sudo mv jprokop.png $AVATAR_FILE
 	echo "Avatar installed"
-	echo
-fi
-
-# Fallback for LightDM because .face file works great in `lightdm --test-mode` but not when it's really running :-(
-AVATAR_FALLBACK_FILE=/var/lib/AccountsService/icons/jprokop.png
-ACCOUNT_PROFILE_FILE=/var/lib/AccountsService/users/jprokop
-if [[ ! -f $AVATAR_FALLBACK_FILE ]]; then
-	sudo mv $AVATAR_FILE $AVATAR_FALLBACK_FILE
-	sudo echo "Icon=$AVATAR_FALLBACK_FILE" >> $ACCOUNT_PROFILE_FILE
-	echo "Avatar fallback installed"
-	echo "But check that $ACCOUNT_PROFILE_FILE has correct content!"
 	echo
 fi

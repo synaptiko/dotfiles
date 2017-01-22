@@ -57,7 +57,8 @@ export HISTCONTROL=ignoredups:erasedups  # no duplicate entries
 export HISTSIZE=100000                   # big big history
 export HISTFILESIZE=100000               # big big history
 shopt -s histappend                      # append to history, don't overwrite it
-export PROMPT_COMMAND="history -a; $PROMPT_COMMAND" # update histfile after every command
+# FIXME it causes problems sometimes! figure out better way!
+# export PROMPT_COMMAND="history -a; $PROMPT_COMMAND" # update histfile after every command
 
 complete -cf sudo
 
@@ -83,11 +84,21 @@ if [ -n "$DISPLAY" ]; then
 fi
 
 # Keys and related
-if [ -n "$DESKTOP_SESSION" ];then
-	eval $(gnome-keyring-daemon --start --components=gpg,pkcs11,secrets,ssh)
-	export GNOME_KEYRING_CONTROL GNOME_KEYRING_PID GPG_AGENT_INFO SSH_AUTH_SOCK
+if command -v gnome-keyring-daemon >& /dev/null; then
+	if [ -n "$DESKTOP_SESSION" ]; then
+		eval $(gnome-keyring-daemon --start --components=gpg,pkcs11,secrets,ssh)
+		export GNOME_KEYRING_CONTROL GNOME_KEYRING_PID GPG_AGENT_INFO SSH_AUTH_SOCK
+	fi
+else
+	# Set SSH to use gpg-agent
+	unset SSH_AGENT_PID
+	if [ "${gnupg_SSH_AUTH_SOCK_by:-0}" -ne $$ ]; then
+		export SSH_AUTH_SOCK="/run/user/$UID/gnupg/S.gpg-agent.ssh"
+	fi
 fi
 
 # See https://github.com/jamessan/vim-gnupg/blob/master/plugin/gnupg.vim#L32
-GPG_TTY=`tty`
-export GPG_TTY
+export GPG_TTY=`tty`
+
+# Refresh gpg-agent tty in case user switches into an X session
+gpg-connect-agent updatestartuptty /bye >/dev/null
