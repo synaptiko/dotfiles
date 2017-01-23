@@ -51,7 +51,7 @@ export NVIM_TUI_ENABLE_CURSOR_SHAPE=1
 
 # Setting ag as the default source for fzf
 export FZF_DEFAULT_COMMAND='ag -g ""'
-export FZF_DEFAULT_OPTS='--reverse --inline-info'
+export FZF_DEFAULT_OPTS='--height=100% --reverse --inline-info'
 
 # Better history handling
 export HISTCONTROL=ignoredups:erasedups  # no duplicate entries
@@ -105,3 +105,6 @@ export GPG_TTY=`tty`
 
 # Refresh gpg-agent tty in case user switches into an X session
 gpg-connect-agent updatestartuptty /bye >/dev/null
+
+[ -f /usr/share/fzf/key-bindings.bash ] && source /usr/share/fzf/key-bindings.bash
+[ -f /usr/share/fzf/completion.bash ] && source /usr/share/fzf/completion.bash
