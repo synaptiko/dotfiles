@@ -14,7 +14,8 @@ alias grep='grep --color=tty -d skip'
 alias df='df -h'
 #alias up='sudo pacman -Syu'
 alias up='sudo systemctl start reflector && sudo pacman -Syu' # TODO prepare better update script! also it should be probably in its own module
-alias agjs='ag --js -Q'
+alias agjs='ag -p .ignore --js -Q'
+alias agscss='ag -p .ignore --sass -Q'
 
 # git
 alias gs='git status'
@@ -57,8 +58,10 @@ export HISTCONTROL=ignoredups:erasedups  # no duplicate entries
 export HISTSIZE=100000                   # big big history
 export HISTFILESIZE=100000               # big big history
 shopt -s histappend                      # append to history, don't overwrite it
-# FIXME it causes problems sometimes! figure out better way!
-# export PROMPT_COMMAND="history -a; $PROMPT_COMMAND" # update histfile after every command
+# FIXME solve following errors:
+# bash: PROMPT_COMMAND: line 0: syntax error near unexpected token `;'
+# bash: PROMPT_COMMAND: line 0: `history -a; history -a; ; printf "\033]0;%s@%s:%s\007" "${USER}" "${HOSTNAME%%.*}" "${PWD/#$HOME/\~}"'
+#export PROMPT_COMMAND="history -a; $PROMPT_COMMAND" # update histfile after every command
 
 complete -cf sudo
 

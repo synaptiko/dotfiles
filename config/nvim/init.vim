@@ -22,12 +22,13 @@ set listchars=tab:  ,trail:·,space:·,nbsp:·
 set list
 set title
 set clipboard=unnamed
+set inccommand=nosplit
 
 let mapleader='\'
 map <SPACE> <leader>
 
 call plug#begin('~/.config/nvim/plugged')
-Plug 'morhetz/gruvbox'
+Plug 'synaptiko/gruvbox'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'tpope/vim-fugitive'
@@ -173,8 +174,9 @@ autocmd BufEnter NERD_tree_* :call BookmarkUnmapKeys()
 " Allow saving of files as sudo when I forgot to start vim using sudo.
 cmap w!! w !sudo tee > /dev/null %
 
-" Avoid accidental unexpected behavior of Ctrl+U in insert mode
-imap <C-u> <nop>
+" Avoid accidental unexpected behavior of Ctrl+U in insert mode & ZZ
+inoremap <C-u> <nop>
+nnoremap ZZ <nop>
 
 " Useful abbreviations
 ab fixme // FIXME jprokop:

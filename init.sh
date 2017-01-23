@@ -97,10 +97,11 @@ if [[ ! -d $FONTS_DIR || ! -f $FONTS_DIR/FantasqueSansMono-Regular.otf ]]; then
 	echo
 fi
 
-$XFCE4_TERMINAL_FILE=~/.config/xfce4/terminal/terminalrc
+XFCE4_TERMINAL_FILE=~/.config/xfce4/terminal/terminalrc
 if [ ! -e $XFCE4_TERMINAL_FILE ]; then
 	echo "Initializing Xfce4 Terminal configuration"
-	ln -s $XFCE4_TERMINAL_FILE $DIR/config/xfce4/terminal/terminalrc-dark
+	mkdir -p $( dirname $XFCE4_TERMINAL_FILE )
+	ln -s $DIR/config/xfce4/terminal/terminalrc-dark $XFCE4_TERMINAL_FILE
 	echo "Xfce4 Terminal configured"
 	echo
 else
