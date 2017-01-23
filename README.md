@@ -24,6 +24,7 @@ I'm using Arch Linux with following packages preinstalled:
 - neovim-symlinks (aur)
 - the\_silver\_searcher
 - fzf (aur)
+- pinentry-libsecret (aur)
 - xsel
 - tmux
 - moc
