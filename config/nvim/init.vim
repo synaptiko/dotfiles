@@ -59,7 +59,8 @@ call plug#end()
 " The Silver Searcher
 if executable('ag')
 	" Use ag over grep
-	set grepprg=ag\ --nogroup\ --nocolor
+	set grepprg=ag\ --vimgrep\ --nogroup\ --nocolor\ $*
+	set grepformat=%f:%l:%c:%m
 endif
 
 let g:gruvbox_italic=1
@@ -196,6 +197,8 @@ augroup configgroup
 	autocmd FileType javascript setlocal nocindent smartindent
 	" python has whitespace significant philosophy, so don't render spaces visible
 	autocmd FileType python setlocal nolist
+	" Better looking quickfix window
+	autocmd BufReadPost quickfix setlocal nolist
 augroup END
 
 " Following ensures that fzf will be always set correctly, even when run from nvim-wrapper
