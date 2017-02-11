@@ -23,7 +23,7 @@ I'm using Arch Linux with following packages preinstalled:
 - neovim-git (aur)
 - neovim-symlinks (aur)
 - the\_silver\_searcher
-- fzf (aur)
+- fzf
 - pinentry-libsecret (aur)
 - xsel
 - tmux
