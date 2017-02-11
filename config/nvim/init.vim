@@ -139,6 +139,9 @@ nmap <silent> mT :tabm -<CR>
 nnoremap <silent> n nzz
 nnoremap <silent> N Nzz
 
+" Better repeating in visual mode
+vnoremap . :norm.<CR>
+
 " Better NERDTree <-> vim-bookmarks integration! (see https://github.com/MattesGroeger/vim-bookmarks#faq)
 let g:bookmark_no_default_key_mappings = 1
 function! BookmarkMapKeys()
