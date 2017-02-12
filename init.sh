@@ -13,56 +13,65 @@ else
 	echo
 fi
 
-BASH_PROFILE_FILE=~/.bash_profile
-if [ ! -e $BASH_PROFILE_FILE ]; then
-	echo "Initializing Bash profile configuration"
-	ln -s $DIR/bash_profile $BASH_PROFILE_FILE
-	echo "Bash profile configured"
+ZLOGIN_FILE=~/.zlogin
+if [ ! -e $ZLOGIN_FILE ]; then
+	echo "Initializing ZShell login configuration"
+	ln -s $DIR/zlogin $ZLOGIN_FILE
+	echo "ZShell login configured"
 	echo
 else
-	echo "Bash profile configuration already exists"
-	echo "If you really want to link it re/move original $BASH_PROFILE_FILE"
+	echo "ZShell login configuration already exists"
+	echo "If you really want to link it re/move original $ZLOGIN_FILE"
 	echo
 fi
 
-BASHRC_FILE=~/.bashrc
-if [ ! -e $BASHRC_FILE ]; then
-	echo "Initializing Bash configuration"
-	ln -s $DIR/bashrc $BASHRC_FILE
-	echo "Bash configured"
+ZPLUG_DIR=~/.zplug
+if [ ! -d $ZPLUG_DIR ]; then
+	echo "Cloning the ZPlug manager"
+	git clone https://github.com/zplug/zplug $ZPLUG_DIR
+	echo "ZPlug manager cloned"
 	echo
 else
-	echo "Bash configuration already exists"
-	echo "If you really want to link it re/move original $BASHRC_FILE"
+	echo "ZPlug manager seems to be already installed"
+	echo "If you want to reinstall it re/move $ZPLUG_DIR directory"
 	echo
 fi
 
-BASHRC_MODULES_DIR=~/.bashrc_modules
-if [ ! -d $BASHRC_MODULES_DIR ]; then
-	mkdir -p $BASHRC_MODULES_DIR
-	echo "You can also put another modules into $BASHRC_MODULES_DIR"
+ZSHRC_FILE=~/.zshrc
+if [ ! -e $ZSHRC_FILE ]; then
+	echo "Initializing ZShell configuration"
+	ln -s $DIR/zshrc $ZSHRC_FILE
+	echo "ZShell configured"
+	echo
+else
+	echo "ZShell configuration already exists"
+	echo "If you really want to link it re/move original $ZSHRC_FILE"
 	echo
 fi
 
-# TODO solve root's .bashrc & modules more elegantly
-ROOT_BASHRC_FILE=/root/.bashrc
-if sudo ls $ROOT_BASHRC_FILE >& /dev/null; then
-	echo "Bash configuration for root already exists"
-	echo "If you really want to link it re/move original $ROOT_BASHRC_FILE"
+# TODO solve root's .zshrc more elegantly
+ROOT_ZSHRC_FILE=/root/.zshrc
+if sudo ls $ROOT_ZSHRC_FILE >& /dev/null; then
+	echo "ZShell configuration for root already exists"
+	echo "If you really want to link it re/move original $ROOT_ZSHRC_FILE"
 	echo
 else
-	echo "Initializing Bash configuration for root"
-	sudo ln -s $DIR/bashrc $ROOT_BASHRC_FILE
-	echo "Bash for root configured"
+	echo "Initializing ZShell configuration for root"
+	sudo ln -s $DIR/zshrc $ROOT_ZSHRC_FILE
+	echo "ZShell for root configured"
 	echo
 fi
 
-ROOT_BASHRC_MODULES_DIR=/root/.bashrc_modules
-if sudo ls $ROOT_BASHRC_MODULES_DIR >& /dev/null; then
-	echo > /dev/null # just NOP-like hack :-)
+# TODO solve root's .zplug more elegantly
+ROOT_ZPLUG_DIR=/root/.zplug
+if [ ! -d $ROOT_ZPLUG_DIR ]; then
+	echo "Cloning the ZPlug manager"
+	sudo git clone https://github.com/zplug/zplug $ROOT_ZPLUG_DIR
+	echo "ZPlug manager cloned"
+	echo
 else
-	sudo mkdir -p $ROOT_BASHRC_MODULES_DIR
-	echo "You can also put another modules into $ROOT_BASHRC_MODULES_DIR"
+	echo "ZPlug manager seems to be already installed"
+	echo "If you want to reinstall it re/move $ROOT_ZPLUG_DIR directory"
 	echo
 fi
 
