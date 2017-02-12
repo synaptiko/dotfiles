@@ -15,7 +15,10 @@ up() {
 	if pacman -Qs reflector >& /dev/null; then
 		printf "Update Pacman mirror list? [y/N]: "
 		if read -q; then
+			printf "\n"
 			sudo systemctl start reflector
+		else
+			printf "\n"
 		fi
 	fi
 
@@ -26,16 +29,17 @@ up() {
 
 		printf "Update also AUR packages? [y/N]: "
 		if read -q; then
+			printf "\n"
 			printf "Update also git/svn etc. packages? [y/N]: "
 			if read -q; then
+				printf "\n"
 				yaourt -Syua --devel
 			else
+				printf "\n"
 				yaourt -Syua
 			fi
 		fi
 	else
 		sudo pacman -Syu
 	fi
-	printf "Install? [y/N]: "
-	if read -q; then
 }

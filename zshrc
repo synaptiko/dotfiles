@@ -44,7 +44,10 @@ zplug "plugins/vi-mode", from:oh-my-zsh
 zplug "plugins/gpg-agent", from:oh-my-zsh
 zplug "plugins/sudo", from:oh-my-zsh
 zplug "synaptiko/dotfiles", use:"zsh/*.zsh"
-zplug "~/work", from:local
+
+if [ -e ~/work/aliases.zsh ]; then
+	zplug "~/work", from:local
+fi
 
 # zplug "halfo/lambda-mod", as:theme
 zplug "denysdovhan/spaceship-zsh-theme", as:theme
