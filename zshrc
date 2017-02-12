@@ -71,12 +71,12 @@ SPACESHIP_GIT_UNPULLED='↓'
 SPACESHIP_GIT_UNPUSHED='↑'
 SPACESHIP_VI_MODE_SHOW=false
 
-if ! zplug check --verbose; then
-	printf "Install? [y/N]: "
-	if read -q; then
-		echo; zplug install
-	fi
-fi
+# if ! zplug check --verbose; then
+# 	printf "Install? [y/N]: "
+# 	if read -q; then
+# 		echo; zplug install
+# 	fi
+# fi
 
 zplug load
 
