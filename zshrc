@@ -32,6 +32,7 @@ bindkey -v
 
 # Defaults for completion
 zstyle :compinstall filename '/home/jprokop/.zshrc'
+zstyle ':completion:*' rehash true
 autoload -Uz compinit
 compinit
 
@@ -40,17 +41,17 @@ source ~/.zplug/init.zsh
 
 zplug 'zplug/zplug', hook-build:'zplug --self-manage'
 
-zplug "plugins/vi-mode", from:oh-my-zsh
-zplug "plugins/gpg-agent", from:oh-my-zsh
-zplug "plugins/sudo", from:oh-my-zsh
-zplug "synaptiko/dotfiles", use:"zsh/*.zsh"
+zplug 'plugins/vi-mode', from:oh-my-zsh
+zplug 'plugins/gpg-agent', from:oh-my-zsh
+zplug 'plugins/sudo', from:oh-my-zsh
+zplug 'synaptiko/dotfiles', use:'zsh/*.zsh'
 
 if [ -e ~/work/aliases.zsh ]; then
-	zplug "~/work", from:local
+	zplug '~/work', from:local
 fi
 
-# zplug "halfo/lambda-mod", as:theme
-zplug "denysdovhan/spaceship-zsh-theme", as:theme
+# zplug 'halfo/lambda-mod', as:theme
+zplug 'denysdovhan/spaceship-zsh-theme', as:theme
 
 # Spaceship theme configuration
 SPACESHIP_PROMPT_SYMBOL='λ'
