@@ -1,4 +1,4 @@
-if [[ "$USER" != "root" ]]; then
+if [[ -z $SSH_CONNECTION && "$USER" != "root" ]]; then
 	# See https://wiki.archlinux.org/index.php/GnuPG#gpg-agent
 
 	# I'm using:
