@@ -12,9 +12,6 @@ export NVIM_TUI_ENABLE_CURSOR_SHAPE=1
 export FZF_DEFAULT_COMMAND='ag -g ""'
 export FZF_DEFAULT_OPTS='--height=100% --reverse --inline-info'
 
-# See https://github.com/jamessan/vim-gnupg/blob/master/plugin/gnupg.vim#L32
-export GPG_TTY=`tty`
-
 # History
 HISTFILE=~/.zsh_history
 HISTSIZE=100000000
@@ -42,7 +39,6 @@ source ~/.zplug/init.zsh
 zplug 'zplug/zplug', hook-build:'zplug --self-manage'
 
 zplug 'plugins/vi-mode', from:oh-my-zsh
-zplug 'plugins/gpg-agent', from:oh-my-zsh
 zplug 'plugins/sudo', from:oh-my-zsh
 zplug 'synaptiko/dotfiles', use:'zsh/*.zsh'
 
@@ -80,9 +76,6 @@ SPACESHIP_VI_MODE_SHOW=false
 # fi
 
 zplug load
-
-# Refresh gpg-agent tty in case user switches into an X session
-gpg-connect-agent updatestartuptty /bye >/dev/null
 
 # FZF sourcing
 [ -f /usr/share/fzf/key-bindings.zsh ] && source /usr/share/fzf/key-bindings.zsh

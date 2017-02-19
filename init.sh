@@ -13,6 +13,47 @@ else
 	echo
 fi
 
+GPG_AGENT_FILE=~/.gnupg/gpg-agent.conf
+if [ ! -e $GPG_AGENT_FILE ]; then
+	echo "Initializing GPG Agent configuration"
+	ln -s $DIR/gnupg/gpg-agent.conf $GPG_AGENT_FILE
+	echo "GPG Agent configured"
+	echo
+else
+	echo "GPG Agent configuration already exists"
+	echo "If you really want to link it re/move original $GPG_AGENT_FILE"
+	echo
+fi
+
+if ! systemctl --user is-enabled gpg-agent.socket >& /dev/null; then
+	systemctl --user enable gpg-agent.socket
+fi
+
+if ! systemctl --user is-enabled gpg-agent-ssh.socket >& /dev/null; then
+	systemctl --user enable gpg-agent-ssh.socket
+fi
+
+if ! systemctl --user is-enabled gpg-agent-browser.socket >& /dev/null; then
+	systemctl --user enable gpg-agent-browser.socket
+fi
+
+# TODO detect which pinentry is configured in gpg-agent.conf?
+if ! ls -la /usr/bin/pinentry | grep pinentry-qt >& /dev/null; then
+	sudo ln -s -f /usr/bin/pinentry-qt /usr/bin/pinentry
+fi
+
+PAM_ENVIRONMENT_FILE=~/.pam_environment
+if [ ! -e $PAM_ENVIRONMENT_FILE ]; then
+	echo "Initializing PAM Environment configuration"
+	ln -s $DIR/pam_environment $PAM_ENVIRONMENT_FILE
+	echo "PAM Environment configured"
+	echo
+else
+	echo "PAM Environment configuration already exists"
+	echo "If you really want to link it re/move original $PAM_ENVIRONMENT_FILE"
+	echo
+fi
+
 ZLOGIN_FILE=~/.zlogin
 if [ ! -e $ZLOGIN_FILE ]; then
 	echo "Initializing ZShell login configuration"
