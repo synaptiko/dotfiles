@@ -23,6 +23,7 @@ set list
 set title
 set clipboard=unnamed
 set inccommand=nosplit
+set mouse=a
 
 let mapleader='\'
 map <SPACE> <leader>
@@ -172,8 +173,6 @@ function! BookmarkUnmapKeys()
 	unmap mt
 	unmap mT
 endfunction
-autocmd BufEnter * :call BookmarkMapKeys()
-autocmd BufEnter NERD_tree_* :call BookmarkUnmapKeys()
 
 " Allow saving of files as sudo when I forgot to start vim using sudo.
 cmap w!! w !sudo tee > /dev/null %
@@ -188,6 +187,11 @@ ab todo // TODO jprokop:
 ab clog console.log();<Left><Left>
 ab dbg debugger
 
+" Default Fzf's status line is not useful for me
+function! s:fzf_statusline()
+	setlocal statusline=·
+endfunction
+
 augroup configgroup
 	autocmd!
 	" Disable auto-insertion of comments (http://vim.wikia.com/wiki/Disable_automatic_comment_insertion)
@@ -199,6 +203,15 @@ augroup configgroup
 	autocmd FileType python setlocal nolist
 	" Better looking quickfix window
 	autocmd BufReadPost quickfix setlocal nolist
+	" Return back transparent background
+	autocmd VimEnter * hi Normal ctermbg=none guibg=none
+	" Trigger autoread when changing buffers or coming back to vim
+	autocmd FocusGained,BufEnter * :checktime
+	" Related to NERDTree <-> vim-bookmarks integration defined above
+	autocmd BufEnter * :call BookmarkMapKeys()
+	autocmd BufEnter NERD_tree_* :call BookmarkUnmapKeys()
+	" Related to Fzf's status line above
+	autocmd! User FzfStatusLine call <SID>fzf_statusline()
 augroup END
 
 " Following ensures that fzf will be always set correctly, even when run from nvim-wrapper
@@ -209,12 +222,6 @@ let $FZF_DEFAULT_OPTS='--reverse --inline-info'
 " Useful for highlight introspection and overrides:
 " http://yanpritzker.com/2012/04/17/how-to-change-vim-syntax-colors-that-are-annoying-you/
 " nmap ,hi :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<' . synIDattr(synID(line("."),col("."),0),"name") . "> lo<" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">" . " FG:" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"fg#")<CR>
-
-" Default Fzf's status line is not useful for me
-function! s:fzf_statusline()
-	setlocal statusline=·
-endfunction
-autocmd! User FzfStatusLine call <SID>fzf_statusline()
 
 " Update appearance of TabLine (according to gruvbox theme)
 highlight TabLineSel guifg=#1d2021 guibg=#a89984
@@ -286,8 +293,6 @@ function! SwitchTheme(variant, ...)
 	" To be more cooler => transparent background
 	if a:0 == 0
 		hi! Normal ctermbg=none guibg=none
-	else
-		autocmd VimEnter * hi Normal ctermbg=none guibg=none
 	endif
 endfunction
 
