@@ -15,6 +15,8 @@ set nowrap                          " Do not wrap long lines
 set shortmess+=filmnrxoOtT          " Abbrev. of messages (avoids 'hit enter')
 set iskeyword+=-                    " Append hyphens, they are quite often used in SCSS and similar
 set termguicolors                   " https://github.com/neovim/neovim/wiki/Following-HEAD#20160511
+set splitright                      " Split vertical windows right to the current windows
+set splitbelow                      " Split horizontal windows below to the current windows
 set noshowmode
 set relativenumber
 set updatetime=750
@@ -24,6 +26,12 @@ set title
 set clipboard=unnamed
 set inccommand=nosplit
 set mouse=a
+
+" Time out on key codes but not mappings.
+" Basically this makes terminal Vim work sanely.
+set notimeout
+set ttimeout
+set ttimeoutlen=10
 
 let mapleader='\'
 map <SPACE> <leader>
@@ -203,8 +211,6 @@ augroup configgroup
 	autocmd FileType python setlocal nolist
 	" Better looking quickfix window
 	autocmd BufReadPost quickfix setlocal nolist
-	" Return back transparent background
-	autocmd VimEnter * hi Normal ctermbg=none guibg=none
 	" Trigger autoread when changing buffers or coming back to vim
 	autocmd FocusGained,BufEnter * :checktime
 	" Related to NERDTree <-> vim-bookmarks integration defined above
@@ -212,6 +218,8 @@ augroup configgroup
 	autocmd BufEnter NERD_tree_* :call BookmarkUnmapKeys()
 	" Related to Fzf's status line above
 	autocmd! User FzfStatusLine call <SID>fzf_statusline()
+	" Open help vertically
+	autocmd FileType help wincmd L
 augroup END
 
 " Following ensures that fzf will be always set correctly, even when run from nvim-wrapper
@@ -291,9 +299,7 @@ function! SwitchTheme(variant, ...)
 	endif
 
 	" To be more cooler => transparent background
-	if a:0 == 0
-		hi! Normal ctermbg=none guibg=none
-	endif
+	hi! Normal ctermbg=none guibg=none
 endfunction
 
 function! ToggleTheme()
