@@ -15,8 +15,15 @@ export FZF_DEFAULT_OPTS='--height=100% --reverse --inline-info'
 # History
 HISTFILE=~/.zsh_history
 HISTSIZE=100000000
-SAVEHIST=100000000
-setopt appendhistory
+SAVEHIST=$((HISTSIZE/2))
+setopt append_history
+setopt extended_history
+setopt hist_expire_dups_first
+setopt hist_ignore_dups
+setopt hist_ignore_space
+setopt hist_verify
+setopt inc_append_history
+setopt share_history
 
 # Don't beep
 unsetopt beep
@@ -47,7 +54,7 @@ if [ -e ~/work/aliases.zsh ]; then
 fi
 
 # zplug 'halfo/lambda-mod', as:theme
-zplug 'denysdovhan/spaceship-zsh-theme', as:theme
+zplug 'synaptiko/spaceship-zsh-theme', as:theme
 
 # Spaceship theme configuration
 SPACESHIP_PROMPT_SYMBOL='λ'
