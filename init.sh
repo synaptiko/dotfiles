@@ -93,6 +93,7 @@ fi
 POLYBAR_DIR=~/.config/polybar
 if [ ! -d $POLYBAR_DIR ]; then
 	echo "Initializing Polybar configuration"
+	mkdir $POLYBAR_DIR
 	ln -s $DIR/config/polybar/config $POLYBAR_DIR/config
 	echo "Polybar configured"
 	echo
