@@ -90,6 +90,14 @@ else
 	echo
 fi
 
+POLYBAR_DIR=~/.config/polybar
+if [ ! -d $POLYBAR_DIR ]; then
+	echo "Initializing Polybar configuration"
+	ln -s $DIR/config/polybar/config $POLYBAR_DIR/config
+	echo "Polybar configured"
+	echo
+fi
+
 # TODO solve root's .zshrc more elegantly
 ROOT_ZSHRC_FILE=/root/.zshrc
 if sudo ls $ROOT_ZSHRC_FILE >& /dev/null; then
