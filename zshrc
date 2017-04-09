@@ -47,7 +47,8 @@ zplug 'zplug/zplug', hook-build:'zplug --self-manage'
 
 zplug 'plugins/vi-mode', from:oh-my-zsh
 zplug 'plugins/sudo', from:oh-my-zsh
-zplug 'synaptiko/dotfiles', use:'zsh/*.zsh'
+# zplug 'synaptiko/dotfiles', use:'zsh/*.zsh'
+zplug '~/.files', from:local, use:'zsh/*.zsh'
 
 if [ -e ~/work/aliases.zsh ]; then
 	zplug '~/work', from:local
