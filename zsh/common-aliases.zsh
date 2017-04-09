@@ -12,9 +12,13 @@ alias agjs='ag -p .ignore --js -Q'
 alias agscss='ag -p .ignore --sass -Q'
 
 up() {
-	read -k "UPDATE_MIRRORS?:: Update Pacman mirror list? [Y/n] "
-	if [ $UPDATE_MIRRORS != $'\n' ]; then
-		printf "\n"
+	if pacman -Qs reflector >& /dev/null; then
+		read -k "UPDATE_MIRRORS?:: Update Pacman mirror list? [Y/n] "
+		if [ $UPDATE_MIRRORS != $'\n' ]; then
+			printf "\n"
+		fi
+	else
+		UPDATE_MIRRORS="n"
 	fi
 
 	if pacman -Qs yaourt >& /dev/null; then
