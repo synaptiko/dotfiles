@@ -12,34 +12,54 @@ alias agjs='ag -p .ignore --js -Q'
 alias agscss='ag -p .ignore --sass -Q'
 
 up() {
-	if pacman -Qs reflector >& /dev/null; then
-		printf "Update Pacman mirror list? [y/N]: "
-		if read -q; then
-			printf "\n"
-			sudo systemctl start reflector
-		else
-			printf "\n"
-		fi
+	read -k "UPDATE_MIRRORS?:: Update Pacman mirror list? [Y/n] "
+	if [ $UPDATE_MIRRORS != $'\n' ]; then
+		printf "\n"
 	fi
 
-	if pacman -Qs packer >& /dev/null; then
-		packer -Syu
-	elif pacman -Qs yaourt >& /dev/null; then
-		sudo pacman -Syu
-
-		printf "Update also AUR packages? [y/N]: "
-		if read -q; then
+	if pacman -Qs yaourt >& /dev/null; then
+		USE_YAOURT="y"
+		read -k "UPDATE_AUR?:: Update AUR packages? [Y/n] "
+		if [ $UPDATE_AUR != $'\n' ]; then
 			printf "\n"
-			printf "Update also git/svn etc. packages? [y/N]: "
-			if read -q; then
+		fi
+
+		if [ $UPDATE_AUR != "n" ]; then
+			read -k "UPDATE_DEVEL?:: Update git/svn… packages? [Y/n] "
+			if [ $UPDATE_DEVEL != $'\n' ]; then
 				printf "\n"
-				yaourt -Syua --devel
-			else
-				printf "\n"
-				yaourt -Syua
 			fi
 		fi
+	elif pacman -Qs packer >& /dev/null; then
+		USE_YAOURT="n"
+		read -k "UPDATE_AUR?:: Update AUR packages? [Y/n] "
+		if [ $UPDATE_AUR != $'\n' ]; then
+			printf "\n"
+		fi
 	else
+		UPDATE_AUR="n"
+	fi
+
+	if [ $UPDATE_MIRRORS != "n" ]; then
+		echo "sudo systemctl start reflector"
+		sudo systemctl start reflector
+	fi
+
+	if [ $UPDATE_AUR != "n" ]; then
+		if [ $USE_YAOURT = "y" ]; then
+			if [ $UPDATE_DEVEL != "n" ]; then
+				echo "yaourt -Syua --devel"
+				yaourt -Syua --devel
+			else
+				echo "yaourt -Syua"
+				yaourt -Syua
+			fi
+		else
+			echo "packer -Syu"
+			packer -Syu
+		fi
+	else
+		echo "sudo pacman -Syu"
 		sudo pacman -Syu
 	fi
 }

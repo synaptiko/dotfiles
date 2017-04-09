@@ -53,13 +53,15 @@ Plug 'MattesGroeger/vim-bookmarks'
 Plug 'sirtaj/vim-openscad'
 Plug 'vim-scripts/ReplaceWithRegister'
 Plug 'scrooloose/nerdtree'
-Plug 'Xuyuanp/nerdtree-git-plugin'
+" Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'jistr/vim-nerdtree-tabs'
 Plug 'chrisbra/Recover.vim'
 Plug 'tpope/vim-commentary'
 Plug 'michaeljsmith/vim-indent-object'
 Plug '907th/vim-auto-save'
 Plug 'PotatoesMaster/i3-vim-syntax'
-Plug 'othree/yajs.vim'
+" Plug 'othree/yajs.vim'
+Plug 'tpope/vim-projectionist'
 Plug 'mxw/vim-jsx'
 Plug 'moll/vim-node'
 Plug 'elzr/vim-json'
@@ -104,6 +106,7 @@ xmap gs <plug>(GrepperOperator)
 nmap <silent> <leader>j :FzfFiles<CR>
 nmap <silent> <leader>k :FzfBuffers<CR>
 nmap <silent> <leader>l :FzfBLines<CR>
+nmap <silent> <leader>a <plug>NERDTreeTabsToggle<CR>
 
 nmap <silent> <leader>[ <Plug>GitGutterPrevHunk
 nmap <silent> <leader>] <Plug>GitGutterNextHunk
