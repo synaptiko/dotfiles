@@ -43,11 +43,21 @@ font-1 = "Material Icons:size=12;4"
 font-2 = "Font Awesome:size=11;2"
 
 [bar/main-jprokop-nuc]
-; TODO jprokop: split according to "hostname": one bar for jprokop-nuc; three bars for jprokop; one for jprokop-ntb
+; TODO jprokop: split according to "hostname": one bar for jprokop-nuc; three bars for jprokop; one for jprokop-tp13
 inherit = bar/base
 modules-left = i3
 modules-center = 
 modules-right = volume date menu
+
+tray-position = right
+tray-padding = 2
+
+[bar/main-jprokop-tp13]
+; TODO jprokop: split according to "hostname": one bar for jprokop-nuc; three bars for jprokop; one for jprokop-tp13
+inherit = bar/base
+modules-left = i3
+modules-center = 
+modules-right = battery volume date menu
 
 tray-position = right
 tray-padding = 2
@@ -85,6 +95,26 @@ label-urgent = %name%
 label-urgent-padding = 1
 label-urgent-foreground = ${colors.fg}
 label-urgent-underline = ${colors.urgent}
+
+[module/battery]
+type = internal/battery
+full-at = 99
+battery = BAT1
+adapter = ADP1
+poll-interval = 30
+time-format = %H:%M
+format-charging = <ramp-capacity> <label-charging>
+format-charging-foreground = #b8bb26
+format-discharging = <ramp-capacity> <label-discharging>
+format-discharging-foreground = ${colors.alert}
+label-charging = %percentage%% (%time%)
+label-discharging = %percentage%% (%time%)
+label-full =  
+ramp-capacity-0 = 
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-3 = 
+ramp-capacity-4 = 
 
 [module/volume]
 type = internal/volume

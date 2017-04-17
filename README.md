@@ -16,15 +16,18 @@ $ ./init.sh
 
 ## Recommended packages
 I'm using Arch Linux with following packages preinstalled:
-- i3, i3status, i3lock
-- numlockx
+- packer (aur)
+- wget, unzip
+- i3-wm, i3lock
 - xorg-xinit
+- polybar (aur)
+- numlockx
+- xsel
 - xfce4-terminal
 - neovim-git (aur)
 - neovim-symlinks (aur)
 - the\_silver\_searcher
 - fzf
 - pinentry-libsecret (aur)
-- xsel
 - tmux
 - moc
