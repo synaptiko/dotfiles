@@ -57,7 +57,7 @@ tray-padding = 2
 inherit = bar/base
 modules-left = i3
 modules-center = 
-modules-right = battery volume date menu
+modules-right = wifi battery volume date menu
 
 tray-position = right
 tray-padding = 2
@@ -96,6 +96,23 @@ label-urgent-padding = 1
 label-urgent-foreground = ${colors.fg}
 label-urgent-underline = ${colors.urgent}
 
+[module/wifi]
+type = internal/network
+interface = wlp3s0
+interval = 15.0
+format-connected = <label-connected> <ramp-signal>
+format-disconnected = <label-disconnected>
+label-connected = %downspeed% %upspeed% [%essid%]
+label-connected-foreground = #666
+ramp-signal-foreground= #666
+ramp-signal-0 = 0%
+ramp-signal-1 = ~20%
+ramp-signal-2 = ~40%
+ramp-signal-3 = ~60%
+ramp-signal-4 = ~80%
+ramp-signal-5 = ~100%
+label-disconnected = 
+
 [module/battery]
 type = internal/battery
 full-at = 99
@@ -104,9 +121,7 @@ adapter = ADP1
 poll-interval = 30
 time-format = %H:%M
 format-charging = <ramp-capacity> <label-charging>
-format-charging-foreground = #b8bb26
 format-discharging = <ramp-capacity> <label-discharging>
-format-discharging-foreground = ${colors.alert}
 label-charging = %percentage%% (%time%)
 label-discharging = %percentage%% (%time%)
 label-full =  
