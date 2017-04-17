@@ -143,10 +143,9 @@ FONTS_DIR=~/.local/share/fonts
 FANTASQUE_DIR=$FONTS_DIR/FantasqueSansMono
 if [[ ! -d $FONTS_DIR || ! -f $FONTS_DIR/FantasqueSansMono-Regular.otf ]]; then
 	echo "Initializing fonts"
-	mkdir -p $FONTS_DIR
+	mkdir -p $FANTASQUE_DIR
 	curl -sfLo $FONTS_DIR/FantasqueSansMono.zip \
 		https://github.com/belluzj/fantasque-sans/releases/download/v1.7.1/FantasqueSansMono.zip
-	mkdir $FANTASQUE_DIRFONTS_DIR
 	unzip - $FONTS_DIR/FantasqueSansMono.zip -d $FANTASQUE_DIR
 	mv $FANTASQUE_DIR/OTF/*.otf $FONTS_DIR
 	rm -r $FANTASQUE_DIR
