@@ -42,6 +42,18 @@ if ! ls -la /usr/bin/pinentry | grep pinentry-qt >& /dev/null; then
 	sudo ln -s -f /usr/bin/pinentry-qt /usr/bin/pinentry
 fi
 
+XORG_KEYBOARD_CONF_FILE=/etc/X11/xorg.conf.d/00-keyboard.conf
+if [ ! -e $XORG_KEYBOARD_CONF_FILE ]; then
+	echo "Initializing X.org's keyboard configuration"
+	sudo ln -s $DIR/xorg.conf.d/00-keyboard.conf $XORG_KEYBOARD_CONF_FILE
+	echo "X.org's keyboard configured"
+	echo
+else
+	echo "X.org's keyboard configuration already exists"
+	echo "If you really want to link it re/move original $XORG_KEYBOARD_CONF_FILE"
+	echo
+fi
+
 PAM_ENVIRONMENT_FILE=~/.pam_environment
 if [ ! -e $PAM_ENVIRONMENT_FILE ]; then
 	echo "Initializing PAM Environment configuration"
