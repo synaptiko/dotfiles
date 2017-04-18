@@ -65,6 +65,7 @@ Plug 'tpope/vim-projectionist'
 Plug 'mxw/vim-jsx'
 Plug 'moll/vim-node'
 Plug 'elzr/vim-json'
+Plug 'tpope/vim-abolish'
 call plug#end()
 
 " The Silver Searcher
