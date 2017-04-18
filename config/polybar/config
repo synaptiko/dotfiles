@@ -64,9 +64,9 @@ tray-padding = 2
 [bar/left-jprokop-tp13]
 monitor = ${env:MONITOR}
 inherit = bar/base
-modules-left = 
+modules-left = i3
 modules-center = 
-modules-right = i3
+modules-right = 
 
 [bar/main-jprokop]
 monitor = DP1
