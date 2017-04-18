@@ -22,6 +22,7 @@ I'm using Arch Linux with following packages preinstalled:
 - xorg-xinit
 - polybar (aur)
 - numlockx
+- xbanish (aur)
 - xsel
 - xfce4-terminal
 - neovim-git (aur)
