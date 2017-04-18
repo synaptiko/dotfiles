@@ -56,6 +56,7 @@ monitor = ${env:MONITOR}
 inherit = bar/base
 modules-left = i3
 modules-center = 
+; TODO jprokop: create & add vpn module
 modules-right = wifi battery volume date menu
 
 tray-position = right
