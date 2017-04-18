@@ -11,6 +11,8 @@ alias df='df -h'
 alias agjs='ag -p .ignore --js -Q'
 alias agscss='ag -p .ignore --sass -Q'
 
+alias l='gtk-launch'
+
 up() {
 	if pacman -Qs reflector >& /dev/null; then
 		read -k "UPDATE_MIRRORS?:: Update Pacman mirror list? [Y/n] "

@@ -1,7 +1,7 @@
 # vim:filetype=dosini
 [colors]
 bg = #1d2021
-tbg = #d11d2021
+tbg = #e51d2021
 fg = #ebdbb2
 focused = #285577
 visible = #5f676a
@@ -40,10 +40,9 @@ module-margin-right = 1
 ; TODO jprokop: add those new fonts + Noto/Noto Emoji to my .files
 font-0 = "Fantasque Sans Mono:size=12;3"
 font-1 = "Material Icons:size=12;4"
-font-2 = "Font Awesome:size=11;2"
+font-2 = "Font Awesome:size=11;3"
 
 [bar/main-jprokop-nuc]
-; TODO jprokop: split according to "hostname": one bar for jprokop-nuc; three bars for jprokop; one for jprokop-tp13
 inherit = bar/base
 modules-left = i3
 modules-center = 
@@ -53,7 +52,7 @@ tray-position = right
 tray-padding = 2
 
 [bar/main-jprokop-tp13]
-; TODO jprokop: split according to "hostname": one bar for jprokop-nuc; three bars for jprokop; one for jprokop-tp13
+monitor = ${env:MONITOR}
 inherit = bar/base
 modules-left = i3
 modules-center = 
@@ -61,6 +60,39 @@ modules-right = wifi battery volume date menu
 
 tray-position = right
 tray-padding = 2
+
+[bar/left-jprokop-tp13]
+monitor = ${env:MONITOR}
+inherit = bar/base
+modules-left = 
+modules-center = 
+modules-right = i3
+
+[bar/main-jprokop]
+monitor = DP1
+inherit = bar/base
+modules-left = i3
+modules-center = 
+modules-right = volume date menu
+
+height = 26
+
+tray-position = right
+tray-padding = 2
+
+[bar/left-jprokop]
+monitor = VGA1
+inherit = bar/base
+modules-left = 
+modules-center = 
+modules-right = i3
+
+[bar/right-jprokop]
+monitor = HDMI2
+inherit = bar/base
+modules-left = i3
+modules-center = 
+modules-right = 
 
 [module/i3]
 type = internal/i3
