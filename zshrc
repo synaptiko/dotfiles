@@ -2,6 +2,10 @@
 export BROWSER=/usr/bin/xdg-open
 export EDITOR=nvim
 export VISUAL=nvim
+export ANDROID_EMULATOR_USE_SYSTEM_LIBS=1
+export ANDROID_HOME=/home/jprokop/Android/SDK
+export JAVA_HOME=/usr/lib/jvm/java-8-jdk
+export PATH=$PATH:$JAVA_HOME/bin
 
 # NVIM_TUI_ENABLE_TRUE_COLOR is problematic in Gnome Terminal: when :term is called inside Neovim colors are incorrect
 # But it can be resolved in init.vim like this: https://github.com/neovim/neovim/issues/4436
