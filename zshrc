@@ -3,7 +3,7 @@ export BROWSER=/usr/bin/xdg-open
 export EDITOR=nvim
 export VISUAL=nvim
 export ANDROID_EMULATOR_USE_SYSTEM_LIBS=1
-export ANDROID_HOME=/home/jprokop/Android/SDK
+export ANDROID_HOME=$HOME/Android/SDK
 export JAVA_HOME=/usr/lib/jvm/java-8-jdk
 export PATH=$PATH:$JAVA_HOME/bin
 
@@ -39,7 +39,7 @@ fi
 bindkey -v
 
 # Defaults for completion
-zstyle :compinstall filename '/home/jprokop/.zshrc'
+zstyle :compinstall filename '$HOME/.zshrc'
 zstyle ':completion:*' rehash true
 autoload -Uz compinit
 compinit
