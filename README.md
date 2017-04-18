@@ -6,10 +6,11 @@ $ ./init.sh
 ```
 
 ## My .files contains:
+- i3 + Polybar configuration
 - Neovim configuration
 - Custom font
 - Xfce4 Terminal configuration
- - light/dark theme switcher script
+  - light/dark theme switcher script
 - Avatar download as ~/.face file
 - MOC configuration
 - Tmux configuration
