@@ -46,7 +46,7 @@ font-2 = "Font Awesome:size=11;3"
 inherit = bar/base
 modules-left = i3
 modules-center = 
-modules-right = volume date menu
+modules-right = workvpn pacman volume date menu
 
 tray-position = right
 tray-padding = 2
@@ -56,8 +56,7 @@ monitor = ${env:MONITOR}
 inherit = bar/base
 modules-left = i3
 modules-center = 
-; TODO jprokop: create & add vpn module
-modules-right = wifi battery volume date menu
+modules-right = wifi openvpn workvpn battery pacman volume date menu
 
 tray-position = right
 tray-padding = 2
@@ -74,7 +73,7 @@ monitor = DP1
 inherit = bar/base
 modules-left = i3
 modules-center = 
-modules-right = volume date menu
+modules-right = pacman volume date menu
 
 height = 26
 
@@ -132,7 +131,7 @@ label-urgent-underline = ${colors.urgent}
 [module/wifi]
 type = internal/network
 interface = wlp3s0
-interval = 15.0
+interval = 15
 format-connected = <label-connected> <ramp-signal>
 format-disconnected = <label-disconnected>
 label-connected = %downspeed% %upspeed% [%essid%]
@@ -145,6 +144,29 @@ ramp-signal-3 = ~60%
 ramp-signal-4 = ~80%
 ramp-signal-5 = ~100%
 label-disconnected = 
+label-diconnected-foreground = #666
+
+[module/openvpn]
+type = custom/script
+exec = pgrep openvpn
+interval = 15
+label = OpenVPN
+format-prefix = " "
+
+[module/workvpn]
+type = custom/script
+exec = pgrep kvpncsvc
+interval = 15
+label = WorkVPN
+format-prefix = " "
+
+[module/pacman]
+type = custom/script
+interval = 1200
+format = <label>
+label = "%output%"
+format-prefix = ""
+exec =  "~/.files/i3/checkupdates.sh"
 
 [module/battery]
 type = internal/battery
