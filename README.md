@@ -25,6 +25,10 @@ I'm using Arch Linux with following packages preinstalled:
 - numlockx
 - xbanish (aur)
 - xsel
+- xclip
+- slop
+- maim
+- byzanz
 - xfce4-terminal
 - neovim-git (aur)
 - neovim-symlinks (aur)

@@ -5,8 +5,9 @@ set $up k
 set $down l
 set $right semicolon
 
-exec --no-startup-id $HOME/.files/i3/startup.sh
-exec_always --no-startup-id $HOME/.files/i3/polybar.sh
+exec --no-startup-id ~/.files/i3/startup.sh
+exec_always --no-startup-id ~/.files/i3/polybar.sh
+exec --no-startup-id ~/.files/i3/autolocker.sh
 
 font pango:Fantasque Sans Mono 12
 
@@ -19,10 +20,11 @@ bindsym $mod+Shift+Return exec --no-startup-id gtk-launch chromium
 bindsym $mod+Shift+q kill
 # bindsym $mod+d exec --no-startup-id j4-dmenu-desktop
 bindsym $mod+d exec --no-startup-id xlunch -r
-# TODO jprokop: improve later! (xrectsel + scrot + xsel)
-# bindsym Print exec gnome-screenshot --interactive
-# TODO jprokop: improve later! (xrectsel + byzanz)
-# bindsym Shift+Print exec byzanz-record -d 10 -w 316 -h 97 -x 1976 -y 321 paste.gif
+bindsym Print exec "maim -u -s -n -l -c 0.157,0.333,0.466,0.4 ~/Pictures/Screenshot-$(date -Iseconds | cut -d'+' -f1).png"
+bindsym Mod4+Print exec "maim -u -s -n -l -c 0.157,0.333,0.466,0.4 | xclip -selection clipboard -t image/png"
+bindsym Shift+Print exec ~/.files/i3/record-screen.sh byzanz
+bindsym Shift+Ctrl+Print exec ~/.files/i3/record-screen.sh gif
+bindsym Shift+Mod4+Print exec ~/.files/i3/record-screen.sh ogv
 
 bindsym $mod+$up focus up
 bindsym $mod+$down focus down
@@ -74,12 +76,12 @@ bindsym $mod+Shift+9 move container to workspace 9
 bindsym $mod+Shift+0 move container to workspace 10
 bindsym $mod+Shift+slash move container to workspace 
 
-bindsym $mod+Shift+c reload
-bindsym $mod+Shift+r restart
+bindsym $mod+Shift+c exec "~/.files/i3/merge-config.sh && i3-msg reload"
+bindsym $mod+Shift+r exec "~/.files/i3/merge-config.sh && i3-msg restart"
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 # TODO jprokop: decide what to use; in case of i3lock autogenerate i3lock image somehow
 # bindsym Mod4+l exec --no-startup-id light-locker-command -l
-bindsym Mod4+l exec --no-startup-id i3lock -u -i ~/Pictures/i3lock.png
+bindsym Mod4+l exec --no-startup-id ~/.files/i3/lock.sh
 
 workspace_auto_back_and_forth yes
 
@@ -120,54 +122,5 @@ client.background       #ffffff
 bindsym $mod+Shift+v exec --no-startup-id xdotool click 2
 
 for_window [title="Android Emulator"] floating enable
-
-# Uncomment on jprokop host
-# workspace 1 output DP1
-# workspace 2 output DP1
-# workspace 3 output DP1
-# workspace 4 output DP1
-# workspace 5 output VGA1
-# workspace 6 output VGA1
-# workspace 7 output VGA1
-# workspace 8 output HDMI2
-# workspace 9 output HDMI2
-# workspace 10 output HDMI2
-# workspace _ output DP1
-
-# Experimental
-# bindsym $mod+t mode "tabs"
-# mode "tabs" {
-# 	bindsym --release $left exec --no-startup-id xdotool key Ctrl+Page_Up
-# 	bindsym --release $right exec --no-startup-id xdotool key Ctrl+Page_Down
-# 	bindsym --release $up exec --no-startup-id xdotool key Page_Up
-# 	bindsym --release $down exec --no-startup-id xdotool key Page_Down
-# 	bindsym --release q exec --no-startup-id xdotool key Ctrl+w
-# 	bindsym --release r exec --no-startup-id xdotool key Ctrl+Shift+r
-
-# 	bindsym Return mode "default"
-# 	bindsym Escape mode "default"
-# }
-
-# bindsym $mod+m mode "mouse"
-# mode "mouse" {
-# 	bindsym $left exec --no-startup-id xdotool mousemove_relative -- -50 0
-# 	bindsym $right exec --no-startup-id xdotool mousemove_relative 50 0
-# 	bindsym $up exec --no-startup-id xdotool mousemove_relative -- 0 -50
-# 	bindsym $down exec --no-startup-id xdotool mousemove_relative 0 50
-# 	bindsym $mod+$left exec --no-startup-id xdotool mousemove_relative -- -15 0
-# 	bindsym $mod+$right exec --no-startup-id xdotool mousemove_relative 15 0
-# 	bindsym $mod+$up exec --no-startup-id xdotool mousemove_relative -- 0 -15
-# 	bindsym $mod+$down exec --no-startup-id xdotool mousemove_relative 0 15
-# 	bindsym d exec --no-startup-id xdotool click 1
-# 	bindsym f exec --no-startup-id xdotool click 3
-# 	bindsym a exec --no-startup-id xdotool click 4
-# 	bindsym s exec --no-startup-id xdotool click 5
-
-# 	bindsym $mod+$up focus up
-# 	bindsym $mod+$down focus down
-# 	bindsym $mod+$left focus left
-# 	bindsym $mod+$right focus right
-
-# 	bindsym Return mode "default"
-# 	bindsym Escape mode "default"
-# }
+for_window [title="Screen Layout Editor"] floating enable # arandr
+for_window [title="Nitrogen"] floating enable

@@ -9,7 +9,7 @@ if [[ "$HOSTNAME" == "jprokop" ]]; then
 	polybar left-$HOSTNAME >& /dev/null &
 	polybar right-$HOSTNAME >& /dev/null &
 elif [[ "$HOSTNAME" == "jprokop-tp13" ]]; then
-	if xrandr | grep "HDMI1 connected primary"; then
+	if xrandr | grep "HDMI1 connected"; then
 		MONITOR=HDMI1 polybar main-$HOSTNAME >& /dev/null &
 		MONITOR=eDP1 polybar left-$HOSTNAME >& /dev/null &
 	else

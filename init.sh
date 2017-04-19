@@ -102,19 +102,6 @@ else
 	echo
 fi
 
-I3_DIR=~/.config/i3
-if [ ! -d $I3_DIR ]; then
-	echo "Initializing i3 configuration"
-	mkdir $I3_DIR
-	ln -s $DIR/config/i3/config $I3_DIR/config
-	echo "i3 configured"
-	echo
-else
-	echo "i3 configuration already exists"
-	echo "If you really want to link it re/move original $I3_DIR"
-	echo
-fi
-
 POLYBAR_DIR=~/.config/polybar
 if [ ! -d $POLYBAR_DIR ]; then
 	echo "Initializing Polybar configuration"
