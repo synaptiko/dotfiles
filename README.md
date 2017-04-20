@@ -17,7 +17,7 @@ $ ./init.sh
 
 ## Recommended packages
 I'm using Arch Linux with following packages preinstalled:
-- packer (aur)
+- cower, pacaur (aur)
 - wget, unzip
 - i3-wm, i3lock
 - xorg-xinit

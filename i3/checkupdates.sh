@@ -1,7 +1,9 @@
 #!/usr/bin/env bash
 pac=$(checkupdates | wc -l)
+aur=$(cower -u | wc -l)
 
-if [[ "$pac" != "0" ]]
+check=$((pac + aur))
+if [[ "$check" != "0" ]]
 then
-	echo $pac
+	echo "$pac/$aur"
 fi

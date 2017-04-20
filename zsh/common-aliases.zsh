@@ -12,6 +12,7 @@ alias agjs='ag -p .ignore --js -Q'
 alias agscss='ag -p .ignore --sass -Q'
 
 alias l='gtk-launch'
+alias recvgpgkey='gpg --recv-keys --keyserver hkp://pool.sks-keyservers.net'
 
 up() {
 	if pacman -Qs reflector >& /dev/null; then
@@ -36,14 +37,26 @@ up() {
 				printf "\n"
 			fi
 		fi
-	elif pacman -Qs packer >& /dev/null; then
+	elif pacman -Qs pacaur >& /dev/null; then
 		USE_YAOURT="n"
 		read -k "UPDATE_AUR?:: Update AUR packages? [Y/n] "
 		if [ $UPDATE_AUR != $'\n' ]; then
 			printf "\n"
 		fi
+
+		if [ $UPDATE_AUR != "n" ]; then
+			read -k "UPDATE_DEVEL?:: Update git/svn… packages? [Y/n] "
+			if [ $UPDATE_DEVEL != $'\n' ]; then
+				printf "\n"
+			fi
+		fi
 	else
 		UPDATE_AUR="n"
+	fi
+
+	read -k "CLEAN_CACHES?:: Clean-up caches after upgrade? [y/N] "
+	if [ $CLEAN_CACHES != $'\n' ]; then
+		printf "\n"
 	fi
 
 	if [ $UPDATE_MIRRORS != "n" ]; then
@@ -61,11 +74,26 @@ up() {
 				yaourt -Syua
 			fi
 		else
-			echo "packer -Syu"
-			packer -Syu
+			if [ $UPDATE_DEVEL != "n" ]; then
+				echo "pacaur -Syua --devel"
+				pacaur -Syua --devel
+			else
+				echo "pacaur -Syua"
+				pacaur -Syua
+			fi
+
+			if [ $CLEAN_CACHES == "y" ]; then
+				echo "pacaur -Scc"
+				pacaur -Scc
+			fi
 		fi
 	else
 		echo "sudo pacman -Syu"
 		sudo pacman -Syu
+
+		if [ $CLEAN_CACHES == "y" ]; then
+			echo "sudo pacman -Scc"
+			sudo pacman -Scc
+		fi
 	fi
 }

@@ -102,6 +102,18 @@ else
 	echo
 fi
 
+USER_DIRS_FILE=~/.config/user-dirs.dirs
+if [ ! -e $USER_DIRS_FILE ]; then
+	echo "Initializing user-dirs configuration"
+	ln -s $DIR/config/user-dirs.dirs $USER_DIRS_FILE
+	echo "Xinit configured"
+	echo
+else
+	echo "User-dirs configuration already exists"
+	echo "If you really want to link it re/move original $USER_DIRS_FILE"
+	echo
+fi
+
 POLYBAR_DIR=~/.config/polybar
 if [ ! -d $POLYBAR_DIR ]; then
 	echo "Initializing Polybar configuration"
