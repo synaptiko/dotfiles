@@ -18,5 +18,7 @@ xset s 300 300
 numlockx &
 xbanish &
 
+export QT_QPA_PLATFORMTHEME="qt5ct"
+
 ~/.files/i3/merge-config.sh
 exec i3

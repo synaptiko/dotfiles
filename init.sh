@@ -233,3 +233,6 @@ if [[ ! -f $AVATAR_FILE ]]; then
 	echo "Avatar installed"
 	echo
 fi
+
+# TODO improve later
+$DIR/qt-gtk-theme.sh

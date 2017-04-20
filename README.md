@@ -38,3 +38,5 @@ I'm using Arch Linux with following packages preinstalled:
 - mate-polkit
 - tmux
 - moc
+- adwaita-qt4, adwaita-qt5 (aur)
+- qt5ct, gnome-themes-standard
