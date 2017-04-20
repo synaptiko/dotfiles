@@ -35,5 +35,6 @@ I'm using Arch Linux with following packages preinstalled:
 - the\_silver\_searcher
 - fzf
 - pinentry-libsecret (aur)
+- mate-polkit
 - tmux
 - moc

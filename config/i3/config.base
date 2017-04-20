@@ -125,3 +125,4 @@ bindsym $mod+Shift+v exec --no-startup-id xdotool click 2
 for_window [title="Android Emulator"] floating enable
 for_window [title="Screen Layout Editor"] floating enable # arandr
 for_window [title="Nitrogen"] floating enable
+for_window [title="Firewall"] floating enable
